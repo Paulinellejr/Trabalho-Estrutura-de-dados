@@ -14,7 +14,7 @@ int main()
         printf("3 - Livro\n");
         printf("4 - Filme\n ");
         printf("0 - Sair\n");
-        printf("Digite a Opção: ");
+        printf("Digite a opcao: ");
         scanf("%d", &dp);
         while (op != 0 || dp != 0)
         {
@@ -26,7 +26,7 @@ int main()
             printf("4 - undo");
             printf("5 - redo");
             printf("0 - Sair \n");
-            printf("Digite a Opção: ");
+            printf("Digite a opcao: ");
             scanf("%d", &op);
             switch (op)
             {
@@ -45,7 +45,7 @@ int main()
                 printf("Arvore Binaria de Busca:\n");
                 break;
             default:
-                printf("Opção inexitente!");
+                printf("opcao inexistente!");
                 break;
             }
         }
