@@ -1,6 +1,6 @@
 #include "listaReversivel.h"
 
-ListaGen *cria_listagen(void *v)
+ListaGen *criaListagen(void *dado)
 {
     ListaGen *novo = (ListaGen *)calloc(1, sizeof(ListaGen));
     if (!novo)
@@ -8,17 +8,40 @@ ListaGen *cria_listagen(void *v)
         printf("Nao foi possivel alocar memoria!");
         exit(1);
     }
-    novo->info = v;
+    novo->info = dado;
     return novo;
 }
 
-ListaGen *insere(ListaGen *L, void *v)
+ListaGen *insere(ListaGen *L, int (*cb)(void *, void *), void *ch)
 {
-    ListaGen *novo = cria_listagen(v);
-    return novo;
+    ListaGen *novo = criaListagen(ch);
+    ListaGen *aux = L;
+    ListaGen *pred = NULL;
+
+    if (!L)
+        return novo;
+
+    while (aux != NULL && cb(aux->info, ch) < 0) // aux->info == struct
+    {
+        pred = aux;
+        aux = aux->prox;
+    }
+
+    if (pred == NULL)
+    {
+        novo->prox = L;
+        L = novo;
+    }
+    else
+    {
+        novo->prox = aux;
+        pred->prox = novo;
+    }
+
+    return L;
 }
 
-void percorre_listagen(ListaGen *L, void (*cb)(void *))
+void percorreListagen(ListaGen *L, void (*cb)(void *))
 {
     ListaGen *aux = L;
     while (aux != NULL)
