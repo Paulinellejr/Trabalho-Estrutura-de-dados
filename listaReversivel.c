@@ -41,6 +41,48 @@ ListaGen *insere(ListaGen *L, int (*cb)(void *, void *), void *ch)
     return L;
 }
 
+ListaGen *Busca(ListaGen *L, int (*cb)(void *, void *), void *ch)
+{
+    ListaGen *aux = L;
+    ListaGen *pred = NULL;
+    {
+        while (aux != NULL && cb(aux->info, ch) != 0)
+        {
+            pred = aux;
+            aux = aux->prox;
+        }
+        return aux;
+    }
+}
+
+ListaGen *remove(ListaGen *L, int (*cb)(void *, void *), void *ch)
+{
+    ListaGen *aux = L;
+    ListaGen *pred = NULL;
+    if (!L)
+    {
+        printf("Lista Vazia");
+        return NULL;
+    }
+    else
+    {
+        while (aux != NULL && cb(aux->info, ch) != 0)
+        {
+            pred = aux;
+            aux = aux->prox;
+        }
+        if (aux != NULL)
+        {
+            if (pred != NULL)
+                pred->prox = aux->prox;
+            else
+                L = aux->prox;
+            free(aux);
+        }
+        return L;
+    }
+}
+
 void percorreListagen(ListaGen *L, void (*cb)(void *))
 {
     ListaGen *aux = L;
