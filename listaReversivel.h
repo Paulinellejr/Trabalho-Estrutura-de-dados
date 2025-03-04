@@ -60,4 +60,30 @@ Não retorna nada.
 
 void percorreListagen(ListaGen *L, void (*cb)(void *));
 
+/*
+Função: percorreListagen
+Descrição:
+??
+Entrada:
+ListaGen *L:??
+void (*cb)(void *):??
+Sai­da:
+Não retorna nada.
+*/
+
+void percorreListagen(ListaGen *L, void (*cb)(void *));
+
+/*
+Função: percorreListagen
+Descrição:
+??
+Entrada:
+ListaGen *L:??
+void (*cb)(void *):??
+Sai­da:
+Não retorna nada.
+*/
+
+void percorreListagen(ListaGen *L, void (*cb)(void *));
+
 #endif

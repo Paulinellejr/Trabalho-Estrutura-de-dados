@@ -34,7 +34,7 @@ ListaGen *insere(ListaGen *L, int (*cb)(void *, void *), void *ch)
     }
     else
     {
-        novo->prox = aux;
+        NewFunction(novo, aux);
         pred->prox = novo;
     }
 
