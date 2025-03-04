@@ -1,10 +1,18 @@
 #include "listaReversivel.h"
 #include "chocolate.h"
+#include "vinho.h"
+#include "livro.h"
+#include "filme.h"
 
 int main()
 {
+    ListaGen *C = NULL;
+    ListaGen *V = NULL;
+    ListaGen *L = NULL;
+    ListaGen *F = NULL;
 
     int dp, op;
+
     while (dp != 0)
     {
 
@@ -19,12 +27,12 @@ int main()
         while (op != 0 || dp != 0)
         {
 
-            printf("__Arvore_Binaria_de_Busca__ \n");
-            printf("1 - Inserir chave \n");
-            printf("2 - remover chave \n");
-            printf("3 - imprimir Arvore \n");
-            printf("4 - undo");
-            printf("5 - redo");
+            printf("Opcao: \n");
+            printf("1 - Inserir \n");
+            printf("2 - remover \n");
+            printf("3 - imprimir  \n");
+            printf("4 - desfazer");
+            printf("5 - refazer");
             printf("0 - Sair \n");
             printf("Digite a opcao: ");
             scanf("%d", &op);
@@ -42,7 +50,14 @@ int main()
                 printf("\n");
                 break;
             case 3:
-                printf("Arvore Binaria de Busca:\n");
+                printf("Imprime\n");
+                percorreListagen(C, imprimeChocolate);
+                break;
+            case 4:
+                printf("undo");
+                break;
+            case 5:
+                printf("redo");
                 break;
             default:
                 printf("opcao inexistente!");

@@ -10,4 +10,5 @@ typedef struct chocolate
     data *fabricacao, *validade;
 } chocolate;
 
+void imprimeChocolate(void *v);
 #endif
