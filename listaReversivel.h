@@ -48,6 +48,32 @@ ponteiro para a estrutura ListaGen alocada dinâmicamente.
 ListaGen *insere(ListaGen *L, int (*cb)(void *, void *), void *ch);
 
 /*
+Função: busca
+Descrição:
+??
+Entrada:
+ListaGen *L: Ponteiro para lista reversivel.
+int (*cb)(void *, void *): função responsavel por comparar as chaves. Retorna 0 caso as chaves forem iguais, maior que 0  caso o valor do primeiro for maior que o segundo e menor que 0 caso o valor do primeiro for menor que o segundo
+void *ch: chave de busca a ser inserida.
+Sai­da:
+ponteiro para a estrutura ListaGen alocada dinâmicamente.
+*/
+ListaGen *Busca(ListaGen *L, int (*cb)(void *, void *), void *ch);
+
+/*
+Função: remove
+Descrição:
+??
+Entrada:
+ListaGen *L: Ponteiro para lista reversivel.
+int (*cb)(void *, void *): função responsavel por comparar as chaves. Retorna 0 caso as chaves forem iguais, maior que 0  caso o valor do primeiro for maior que o segundo e menor que 0 caso o valor do primeiro for menor que o segundo
+void *ch: chave de busca a ser inserida.
+Sai­da:
+ponteiro para a estrutura ListaGen alocada dinâmicamente.
+*/
+ListaGen *remove(ListaGen *L, int (*cb)(void *, void *), void *ch);
+
+/*
 Função: percorreListagen
 Descrição:
 ??
