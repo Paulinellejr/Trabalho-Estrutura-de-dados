@@ -26,7 +26,6 @@ ListaGen *insere(ListaGen *L, int (*cb)(void *, void *), void *ch)
         pred = aux;
         aux = aux->prox;
     }
-
     if (pred == NULL)
     {
         novo->prox = L;
@@ -34,7 +33,7 @@ ListaGen *insere(ListaGen *L, int (*cb)(void *, void *), void *ch)
     }
     else
     {
-        NewFunction(novo, aux);
+        novo->prox = aux;
         pred->prox = novo;
     }
 
@@ -44,24 +43,24 @@ ListaGen *insere(ListaGen *L, int (*cb)(void *, void *), void *ch)
 ListaGen *Busca(ListaGen *L, int (*cb)(void *, void *), void *ch)
 {
     ListaGen *aux = L;
-    ListaGen *pred = NULL;
+    while (aux != NULL && cb(aux->info, ch) != 0)
     {
-        while (aux != NULL && cb(aux->info, ch) != 0)
-        {
-            pred = aux;
-            aux = aux->prox;
-        }
-        return aux;
+        aux = aux->prox;
     }
+    if (aux != NULL)
+    {
+        printf("\n Chave Encotrada!\n");
+    }
+    return aux;
 }
 
-ListaGen *remove(ListaGen *L, int (*cb)(void *, void *), void *ch)
+ListaGen *removeChave(ListaGen *L, int (*cb)(void *, void *), void *ch)
 {
     ListaGen *aux = L;
     ListaGen *pred = NULL;
     if (!L)
     {
-        printf("Lista Vazia");
+        printf("Nao ha nada no estoque");
         return NULL;
     }
     else
@@ -78,6 +77,10 @@ ListaGen *remove(ListaGen *L, int (*cb)(void *, void *), void *ch)
             else
                 L = aux->prox;
             free(aux);
+        }
+        else
+        {
+            printf("Chave nao encontrada na lista.\n");
         }
         return L;
     }

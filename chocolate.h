@@ -10,5 +10,7 @@ typedef struct chocolate
     data *fabricacao, *validade;
 } chocolate;
 
+chocolate *criaChocolate(char *nome, char *marca, char *origem, char *tipo, float porcentagem, float peso, int fDia, int fMes, int fAno, int vDia, int vMes, int vAno);
+int comparaChocolate(void *v, void *ch);
 void imprimeChocolate(void *v);
 #endif

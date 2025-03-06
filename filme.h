@@ -10,6 +10,8 @@ typedef struct filme
     data *publicacao;
 } filme;
 
+filme *criaFilme(char *titulo, char *diretor, char *distribuidor, char *pais, int duracao, int dia, int mes, int ano);
+int comparaFilme(void *v, void *ch);
 void imprimeFilme(void *v);
 
 #endif
