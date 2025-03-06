@@ -61,18 +61,13 @@ Os dados que devem ser gerenciados pelo sistema para cada tipo de produto inclue
     – Ano de fabricação;
   
 - Livro:
+  
     – Título (chave de busca);
-  
     – Autor;
-  
     – Editora;
-  
     – Data de publicaçãogenéricos;
-  
     – Idioma;
-  
     – Número de páginas;
-  
 - Filme:
   
     – Título (chave de busca);
