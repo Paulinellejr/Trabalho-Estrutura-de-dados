@@ -88,7 +88,7 @@ Os dados que devem ser gerenciados pelo sistema para cada tipo de produto inclue
   
      País de origem;
   
-    Com base nesses requisitos, Vianne contratou sua empresa para desenvolver o sistema de
+Com base nesses requisitos, Vianne contratou sua empresa para desenvolver o sistema de
 gerenciamento das listas de produtos. Seu supervisor imediato lhe solicitou que a estrutura de
 dados fosse implementada de forma a ser reutilizável para todos os departamentos, utilizando
 uma estrutura de lista reversível genérica. Assim, a mesma estrutura de dados poderá ser
@@ -121,6 +121,9 @@ ilustra isso com um exemplo de aplicação da lista para elementos do tipo intei
 1(a) mostra a lista original [2,5,6,7], apontada pelo ponteiro de cabeça h. A Figura 1(b) mostra
 a nova lista [2,6,7] após excluir(5), apontada pelo ponteiro de cabeça h’. Como os nós 6 e 7
 permanecem inalterados, eles são compartilhados tanto pela lista [2,5,6,7] quanto pela [2,6,7].
+
+![Screenshot From 2025-03-06 02-29-35](https://github.com/user-attachments/assets/929f97b8-4f82-47f1-996f-de1ef73953bc)
+
 
 ## 3 Objetivo do Trabalho
 
