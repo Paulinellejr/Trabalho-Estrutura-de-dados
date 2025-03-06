@@ -28,36 +28,65 @@ atualizações, exclusões e adições de dados.
 Os dados que devem ser gerenciados pelo sistema para cada tipo de produto incluem:
 
 - Chocolate:
-    – Nome (chave de busca)
-    – Marca
-    – Tipo de chocolate (ao leite, amargo ou branco)
-    – Porcentagem de cacau (para chocolates amargos)
-    – Nacionalidade ou origem
-    – Peso
-    – Data de fabricação
-    – Validade
+  
+    – Nome (chave de busca);
+  
+    – Marca;
+  
+    – Tipo de chocolate (ao leite, amargo ou branco);
+  
+    – Porcentagem de cacau (para chocolates amargos);
+  
+    – Nacionalidade ou origem;
+  
+    – Peso;
+  
+    – Data de fabricação;
+  
+    – Validade;
 - Vinho:
-    – Nome (chave de busca)
-    – Vinícola
-    – Tipo (tinto, branco, rosé, espumante branco, espumante rosé)
-    – País
-    – Uva
-    – Região
-    – Ano de fabricação
+  
+    – Nome (chave de busca);
+  
+    – Vinícola;
+  
+    – Tipo (tinto, branco, rosé, espumante branco, espumante rosé);
+  
+    – País;
+  
+    – Uva;
+  
+    – Região;
+  
+    – Ano de fabricação;
+  
 - Livro:
-    – Título (chave de busca)
-    – Autor
-    – Editora
-    – Data de publicaçãogenéricos
-    – Idioma
-    – Número de páginas
-- Filme
-    – Título (chave de busca)
-    – Diretor
-    – Gênero
-    – Distribuidor
-    – Duração
-    – País de origem
+    – Título (chave de busca);
+  
+    – Autor;
+  
+    – Editora;
+  
+    – Data de publicaçãogenéricos;
+  
+    – Idioma;
+  
+    – Número de páginas;
+  
+- Filme:
+  
+    – Título (chave de busca);
+  
+    – Diretor;
+  
+    – Gênero;
+  
+    – Distribuidor;
+  
+    – Duração;
+  
+    – País de origem;
+  
 gerenciamento das listas de produtos. Seu supervisor imediato lhe solicitou que a estrutura de
 dados fosse implementada de forma a ser reutilizável para todos os departamentos, utilizando
 uma estrutura de lista reversível genérica. Assim, a mesma estrutura de dados poderá ser
