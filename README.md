@@ -88,6 +88,7 @@ Os dados que devem ser gerenciados pelo sistema para cada tipo de produto inclue
   
      País de origem;
   
+  Com base nesses requisitos, Vianne contratou sua empresa para desenvolver o sistema de
 gerenciamento das listas de produtos. Seu supervisor imediato lhe solicitou que a estrutura de
 dados fosse implementada de forma a ser reutilizável para todos os departamentos, utilizando
 uma estrutura de lista reversível genérica. Assim, a mesma estrutura de dados poderá ser
