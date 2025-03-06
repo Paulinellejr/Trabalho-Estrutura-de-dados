@@ -6,6 +6,7 @@
 /*Inclusão de bibliotecas necessárias para o pacote*/
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /* Definição de estruturas e declaração de variáveis locais */
 
@@ -71,7 +72,7 @@ void *ch: chave de busca a ser inserida.
 Sai­da:
 ponteiro para a estrutura ListaGen alocada dinâmicamente.
 */
-ListaGen *remove(ListaGen *L, int (*cb)(void *, void *), void *ch);
+ListaGen *removeChave(ListaGen *L, int (*cb)(void *, void *), void *ch);
 
 /*
 Função: percorreListagen
@@ -87,7 +88,7 @@ Não retorna nada.
 void percorreListagen(ListaGen *L, void (*cb)(void *));
 
 /*
-Função: percorreListagen
+Função: desfazer
 Descrição:
 ??
 Entrada:
@@ -96,11 +97,9 @@ void (*cb)(void *):??
 Sai­da:
 Não retorna nada.
 */
-
-void percorreListagen(ListaGen *L, void (*cb)(void *));
 
 /*
-Função: percorreListagen
+Função: refazer
 Descrição:
 ??
 Entrada:
@@ -109,7 +108,5 @@ void (*cb)(void *):??
 Sai­da:
 Não retorna nada.
 */
-
-void percorreListagen(ListaGen *L, void (*cb)(void *));
 
 #endif

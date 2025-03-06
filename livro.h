@@ -10,6 +10,8 @@ typedef struct livro
     data *publicacao;
 } livro;
 
+livro *criaLivro(char *titulo, char *autor, char *editora, char *idioma, int pagina, int dia, int mes, int ano);
+int comparaLivro(void *v, void *ch);
 void imprimeLivro(void *v);
 
 #endif
