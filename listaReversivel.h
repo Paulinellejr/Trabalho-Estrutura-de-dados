@@ -4,9 +4,11 @@
 #define TAM 63
 
 /*Inclusão de bibliotecas necessárias para o pacote*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "ctype.h"
 
 /* Definição de estruturas e declaração de variáveis locais */
 
@@ -21,6 +23,61 @@ typedef struct listagen
     struct listagen *prox;
 } ListaGen;
 
+typedef struct versao
+{
+    ListaGen *Lista;
+    struct versao *prox;
+
+} Versao;
+/* Cabeçalhos das funções com suas respectivas descrições */
+
+// Funções referente as vesoes do codigo
+
+/*
+Função: criaListagen
+Descrição: Aloca dinamicamente uma estrutura ListeGen e inicializa o campo info passando com o dado como parametro.
+Entrada:
+void * dado: Dado genercido.
+Sai­da:
+ponteiro para a estrutura ListaGen  alocada dinâmicamente.
+*/
+
+Versao *criaVersao(ListaGen *L);
+/*
+Função: criaListagen
+Descrição: Aloca dinamicamente uma estrutura ListeGen e inicializa o campo info passando com o dado como parametro.
+Entrada:
+void * dado: Dado genercido.
+Sai­da:
+ponteiro para a estrutura ListaGen  alocada dinâmicamente.
+*/
+
+Versao *empilha(Versao **V, ListaGen *L);
+
+/*
+Função: criaListagen
+Descrição: Aloca dinamicamente uma estrutura ListeGen e inicializa o campo info passando com o dado como parametro.
+Entrada:
+void * dado: Dado genercido.
+Sai­da:
+ponteiro para a estrutura ListaGen  alocada dinâmicamente.
+*/
+
+Versao *desempilha(Versao **V);
+
+////////////////////////////////////////////////////////////////////////
+
+// Funções referentes a lista Reversivel
+
+/*
+Função: criaListagen
+Descrição: Aloca dinamicamente uma estrutura ListeGen e inicializa o campo info passando com o dado como parametro.
+Entrada:
+void * dado: Dado genercido.
+Sai­da:
+ponteiro para a estrutura ListaGen  alocada dinâmicamente.
+*/
+ListaGen *copiarLista(ListaGen *L);
 /* Cabeçalhos das funções com suas respectivas descrições */
 
 /*
@@ -79,7 +136,7 @@ Função: percorreListagen
 Descrição:
 ??
 Entrada:
-ListaGen *L:??
+ListaGen *L: Ponteiro para lista reversivel.
 void (*cb)(void *):??
 Sai­da:
 Não retorna nada.
@@ -98,6 +155,8 @@ Sai­da:
 Não retorna nada.
 */
 
+ListaGen *desfazer(ListaGen *L, Versao **pilhaDesfazer, Versao **pilhaResfazer);
+
 /*
 Função: refazer
 Descrição:
@@ -108,5 +167,7 @@ void (*cb)(void *):??
 Sai­da:
 Não retorna nada.
 */
+
+ListaGen *refazer(ListaGen *L, Versao **pilhaDesfazer, Versao **pilhaResfazer);
 
 #endif
