@@ -13,30 +13,46 @@ typedef struct chocolate
 } chocolate;
 
 /*
-Função: criaListagen
-Descrição: Aloca dinamicamente uma estrutura ListeGen e inicializa o campo info passando com o dado como parametro.
+Função: criaChocolate
+Descrição: Aloca dinamicamente uma estrutura Chocolate e inicializa o campo info passando com o dado como parametro.
 Entrada:
-void * dado: Dado genercido.
+char *nome:
+char *marca:
+char *origem:
+char *tipo:
+float porcentagem:
+float peso:
+int fDia:
+int fMes:
+int fAno:
+int vDia:
+int vMes:
+int vAno:
 Sai­da:
-ponteiro para a estrutura ListaGen  alocada dinâmicamente.
+ponteiro para a estrutura Chocolate alocada dinâmicamente.
 */
 chocolate *criaChocolate(char *nome, char *marca, char *origem, char *tipo, float porcentagem, float peso, int fDia, int fMes, int fAno, int vDia, int vMes, int vAno);
+
 /*
-Função: criaListagen
-Descrição: Aloca dinamicamente uma estrutura ListeGen e inicializa o campo info passando com o dado como parametro.
+Função: comparaChocolate
+Descrição: Função responsavel por comparar a chave de busca.
 Entrada:
-void * dado: Dado genercido.
+void * v: chave do nó da lista.
+void *  ch: chave de busca;
 Sai­da:
-ponteiro para a estrutura ListaGen  alocada dinâmicamente.
+Retorna zero se as chaves forem iguais;
+menor que zero primeiro caractere que não corresponde possui um valor inferior na chave do nó do que na chave de busca;
+maior que zero primeiro caractere que não corresponde possui um valor maior na chave do nó do que na chave de busca;
 */
 int comparaChocolate(void *v, void *ch);
+
 /*
-Função: criaListagen
-Descrição: Aloca dinamicamente uma estrutura ListeGen e inicializa o campo info passando com o dado como parametro.
+Função: imprimeChocolate
+Descrição: Função resposavel  por  imprimir o dado.
 Entrada:
-void * dado: Dado genercido.
+void * dado: Dado genérico a ser impresso.
 Sai­da:
-ponteiro para a estrutura ListaGen  alocada dinâmicamente.
+Nao retorna nada.
 */
 void imprimeChocolate(void *v);
 #endif

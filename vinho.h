@@ -14,38 +14,42 @@ typedef struct vinho
 /* Cabeçalhos das funções com suas respectivas descrições */
 
 /*
-Função: refazer
-Descrição:
-??
+Função: criaVinho
+Descrição: Aloca dinamicamente uma estrutura Vinho e inicializa o campo info passando com o dado como parametro.
 Entrada:
-ListaGen *L:??
-void (*cb)(void *):??
+char *nome:
+char *pais:
+char *regiao:
+char *tipo:
+char *vinicola:
+char *uva:
+int dia:
+int mes:
+int ano:
 Sai­da:
-Não retorna nada.
+ponteiro para a estrutura Vinho alocada dinâmicamente.
 */
 vinho *criaVinho(char *nome, char *pais, char *regiao, char *tipo, char *vinicola, char *uva, int dia, int mes, int ano);
 
 /*
-Função: refazer
-Descrição:
-??
+Função: comparaVinho
+Descrição: Função responsavel por comparar a chave de busca.
 Entrada:
-ListaGen *L:??
-void (*cb)(void *):??
+void * v: chave do nó da lista.
+void *  ch: chave de busca;
 Sai­da:
-Não retorna nada.
+Retorna zero se as chaves forem iguais;
+menor que zero primeiro caractere que não corresponde possui um valor inferior na chave do nó do que na chave de busca;
+maior que zero primeiro caractere que não corresponde possui um valor maior na chave do nó do que na chave de busca;
 */
 int comparaVinho(void *v, void *ch);
-
 /*
-Função: refazer
-Descrição:
-??
+Função: imprimeVinho
+Descrição: Função resposavel  por  imprimir o dado.
 Entrada:
-ListaGen *L:??
-void (*cb)(void *):??
+void * dado: Dado genérico a ser impresso.
 Sai­da:
-Não retorna nada.
+Nao retorna nada.
 */
 void imprimeVinho(void *v);
 

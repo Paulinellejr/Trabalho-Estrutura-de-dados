@@ -11,6 +11,17 @@ Versao *criaVersao(ListaGen *L)
     novaV->Lista = L;
     return novaV;
 }
+ListaGen *criaListagen(void *dado)
+{
+    ListaGen *novo = (ListaGen *)calloc(1, sizeof(ListaGen));
+    if (!novo)
+    {
+        printf("Nao foi possivel alocar memoria!");
+        exit(1);
+    }
+    novo->info = dado;
+    return novo;
+}
 
 Versao *empilha(Versao **V, ListaGen *L)
 {
@@ -30,70 +41,96 @@ Versao *desempilha(Versao **V)
     return aux;
 }
 
-ListaGen *criaListagen(void *dado)
-{
-    ListaGen *novo = (ListaGen *)calloc(1, sizeof(ListaGen));
-    if (!novo)
-    {
-        printf("Nao foi possivel alocar memoria!");
-        exit(1);
-    }
-    novo->info = dado;
-    return novo;
-}
-
-ListaGen *copiarLista(ListaGen *L)
-{
-    if (!L)
-        return NULL;
-
-    ListaGen *novaCabeca = criaListagen(L->info);
-    ListaGen *auxOriginal = L->prox;
-    ListaGen *auxCopia = novaCabeca;
-
-    while (auxOriginal)
-    {
-        auxCopia->prox = criaListagen(auxOriginal->info);
-        auxCopia = auxCopia->prox;
-        auxOriginal = auxOriginal->prox;
-    }
-
-    return novaCabeca;
-}
-
 ListaGen *insere(ListaGen *L, int (*cb)(void *, void *), void *ch)
 {
-    ListaGen *L2 = copiarLista(L);
-
+    ListaGen *aux = L;
     ListaGen *novo = criaListagen(ch);
+    ListaGen *aux2 = NULL;
+    ListaGen *L2 = NULL;
 
-    if (!L2)
+    if (!L)
     {
         return novo;
     }
-
-    ListaGen *aux = L2;
-    ListaGen *pred = NULL;
-
-    while (aux && cb(aux->info, ch) < 0)
+    while (aux->prox != NULL && cb(aux->info, ch) < 0)
     {
-        pred = aux;
+        if (L2 == NULL)
+        {
+            L2 = criaListagen(L->info);
+            aux2 = L;
+        }
+        else
+        {
+            aux2->prox = criaListagen(aux->info);
+            aux2 = aux2->prox;
+        }
         aux = aux->prox;
     }
-
-    if (!pred)
+    if (aux2 == NULL)
     {
-        novo->prox = L2;
+        novo->prox = L;
         L2 = novo;
     }
     else
     {
         novo->prox = aux;
-        pred->prox = novo;
+        aux2->prox = novo;
     }
-
     return L2;
 }
+
+ListaGen *removeChave(ListaGen *L, int (*cb)(void *, void *), void *ch)
+{
+    ListaGen *aux = L;  // auxiliar de copia
+    ListaGen *auxB = L; // auxiliar de  busca
+    ListaGen *pred = NULL;
+    ListaGen *L2 = NULL;
+    ListaGen *aux2 = NULL;
+    while (auxB != NULL && cb(auxB->info, ch) != 0)
+    {
+        pred = auxB;
+        auxB = auxB->prox;
+    }
+    if (auxB != NULL)
+    {
+        if (pred == NULL) // caso aux no inicio
+        {
+            L2 = aux->prox;
+        }
+        else
+        {
+            while (cb(aux->info, ch) != 0)
+            {
+                if (L2 == NULL)
+                {
+                    L2 = criaListagen(L->info);
+                    aux2 = L2;
+                }
+                else
+                {
+                    aux2->prox = criaListagen(aux->info);
+                    aux2 = aux2->prox;
+                }
+                aux = aux->prox;
+            }
+            aux2 = aux->prox;
+            return L2;
+        }
+    }
+    printf("Chave nao encontrada na lista.\n");
+    return L;
+}
+
+void percorreListagen(ListaGen *L, void (*cb)(void *))
+{
+    ListaGen *aux = L;
+    while (aux != NULL)
+    {
+        cb(aux->info);
+        aux = aux->prox;
+    }
+}
+
 ListaGen *Busca(ListaGen *L, int (*cb)(void *, void *), void *ch)
 {
     ListaGen *aux = L;
@@ -110,60 +147,6 @@ ListaGen *Busca(ListaGen *L, int (*cb)(void *, void *), void *ch)
         printf("\nProduto nao encotrado!\n");
     }
     return aux;
-}
-
-ListaGen *removeChave(ListaGen *L, int (*cb)(void *, void *), void *ch)
-{
-    ListaGen *aux = L;
-    ListaGen *pred = NULL;
-    if (!L)
-    {
-        printf("Nao ha nada no estoque");
-        return NULL;
-    }
-    else
-    {
-
-        while (aux != NULL && cb(aux->info, ch) != 0)
-        {
-            pred = aux;
-            aux = aux->prox;
-        }
-        if (aux != NULL)
-        {
-            ListaGen *L2 = criaListagen(aux->info);
-            ListaGen *aux2 = L2;
-            if (pred == NULL)
-            {
-                L2 = aux->prox;
-            }
-            else
-            {
-                while (cb(aux->info, ch) != 0)
-                {
-                    aux2->prox = criaListagen(aux->info);
-                    aux = aux->prox;
-                }
-                aux2 = aux->prox;
-            }
-            return L2;
-        }
-        else
-        {
-            printf("Chave nao encontrada na lista.\n");
-            return L;
-        }
-    }
-}
-
-void percorreListagen(ListaGen *L, void (*cb)(void *))
-{
-    ListaGen *aux = L;
-    while (aux != NULL)
-    {
-        cb(aux->info);
-        aux = aux->prox;
-    }
 }
 
 ListaGen *desfazer(ListaGen *L, Versao **pilhaDesfazer, Versao **pilhaRefazer)
@@ -191,6 +174,7 @@ ListaGen *desfazer(ListaGen *L, Versao **pilhaDesfazer, Versao **pilhaRefazer)
 
     return versaoAnt;
 }
+
 ListaGen *refazer(ListaGen *L, Versao **pilhaDesfazer, Versao **pilhaRefazer)
 {
 

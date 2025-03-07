@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "chocolate.h": "c",
+        "listareversivel.h": "c",
+        "ctype.h": "c",
+        "versao.h": "c"
+    }
+}
