@@ -1,24 +1,47 @@
-#include "listaReversivel.h"
 
+#include "listaReversivel.h"
 #include "filme.h"
+#include "livro.h"
+#include "vinho.h"
+#include "chocolate.h"
 
 int main()
 {
-    ListaGen *aux;
     ListaGen *V = NULL;
-    filme *chave = criaFilme("Titulo", "Diretor", "Distribuidor", "Pais", 2000, 1, 2, 3000);
-    V = insere(V, comparaFilme, chave);
-    chave = criaFilme("MAchado", "autor", "Editora", "Idioma", 2000, 1, 2, 3000);
-    V = insere(V, comparaFilme, chave);
-    percorreListagen(V, imprimeFilme);
-    V = removeChave(V, comparaFilme, chave);
-    aux = Busca(V, comparaFilme, "Titulo");
-    if (aux != NULL)
-    {
-        imprimeFilme(aux->info);
-    }
-    printf("\nRemove\n");
-    percorreListagen(V, imprimeFilme);
+    Versao *pilhaDesfazer = NULL;
+    Versao *pilhaResfazer = NULL;
+
+    // Exemplo de uso:
+    // Insere um novo elemento
+    vinho *chave = criaVinho("Nome", "pais", "regiao", "tipo", "vinicola", "uva", 1, 2, 2000);
+    // Salva o estado atual na pilha "undo" antes da inserção
+    V = insere(V, comparaVinho, chave);
+    pilhaDesfazer = empilha(&pilhaDesfazer, V);
+    chave = criaVinho("Juduca", "pais", "regiao", "tipo", "vinicola", "uva", 1, 2, 2000);
+
+    V = insere(V, comparaVinho, chave);
+    pilhaDesfazer = empilha(&pilhaDesfazer, V);
+    chave = criaVinho("Butuca", "pais", "regiao", "tipo", "vinicola", "uva", 1, 2, 2000);
+
+    V = insere(V, comparaVinho, chave);
+    pilhaDesfazer = empilha(&pilhaDesfazer, V);
+
+    percorreListagen(V, imprimeVinho);
+
+    V = desfazer(V, &pilhaDesfazer, &pilhaResfazer);
+
+    printf("________________________________________\n");
+
+    // Desfaz a inserção
+
+    percorreListagen(V, imprimeVinho);
+    V = refazer(V, &pilhaDesfazer, &pilhaResfazer);
+    printf("________________________________________\n");
+
+    percorreListagen(V, imprimeVinho);
+
+    // Refaz a inserçã
+    // Código de limpeza aqui...
 
     return 0;
 }
