@@ -8,94 +8,120 @@
 int main()
 {
     ListaGen *V = NULL;
+    ListaGen *C = NULL;
+    ListaGen *L = NULL;
+    ListaGen *F = NULL;
     Versao *pilhaDesfazer = NULL;
-    Versao *pilhaResfazer = NULL;
+    Versao *pilhaRefazer = NULL;
+    int dp, op;
+    char chave[TAM];
 
-    // Exemplo de uso:
-    // Insere um novo elemento
-    vinho *chave = criaVinho("Nome", "pais", "regiao", "tipo", "vinicola", "uva", 1, 2, 2000);
-    // Salva o estado atual na pilha "undo" antes da inserção
-    V = insere(V, comparaVinho, chave);
-    pilhaDesfazer = empilha(&pilhaDesfazer, V);
-    chave = criaVinho("Juduca", "pais", "regiao", "tipo", "vinicola", "uva", 1, 2, 2000);
+    while (dp != 0)
+    {
+        printf("Escolha um Produto\n");
+        printf("1 - Chocolate \n");
+        printf("2 - Vinho\n");
+        printf("3 - Livro\n");
+        printf("4 - Filme\n ");
+        printf("0 - Sair\n");
+        printf("Digite a opcao: ");
+        scanf("%d", &dp);
+        while (op != 0 || dp != 0)
+        {
 
-    V = insere(V, comparaVinho, chave);
-    pilhaDesfazer = empilha(&pilhaDesfazer, V);
-    chave = criaVinho("Butuca", "pais", "regiao", "tipo", "vinicola", "uva", 1, 2, 2000);
+            printf("___________________________ \n");
+            printf("1 - Inserir \n");
+            printf("2 - remover \n");
+            printf("3 - imprimir  \n");
+            printf("4 - desfazer");
+            printf("5 - refazer");
+            printf("0 - Sair \n");
+            printf("Digite a opcao: ");
+            scanf("%d", &op);
+            switch (op)
+            {
+            case 0:
+                printf("Saindo... ");
+                break;
+            case 1:
+                if (dp == 1)
+                {
+                }
+                pilhaDesfazer = empilha(&pilhaDesfazer, V);
+                printf("\n");
+                break;
+            case 2:
+                printf("Digite a Nome/Titulo a ser removido: ");
+                getc(stdin);
+                scanf("%[^\n]", chave);
+                if (dp == 1)
+                {
+                    C = removeChave(C, comparaChocolate, chave);
+                    pilhaDesfazer = empilha(&pilhaDesfazer, C);
+                }
+                else if (dp == 2)
+                {
+                    V = removeChave(C, comparaChocolate, chave);
+                    pilhaDesfazer = empilha(&pilhaDesfazer, V);
+                }
+                else if (dp == 3)
+                {
+                    L = removeChave(C, comparaChocolate, chave);
+                    pilhaDesfazer = empilha(&pilhaDesfazer, L);
+                }
+                else
+                {
+                    F = removeChave(C, comparaChocolate, chave);
+                    pilhaDesfazer = empilha(&pilhaDesfazer, F);
+                }
+                printf("\n");
+                break;
+            case 3:
+                printf("Estoque de");
+                if (dp == 1)
+                {
 
-    V = insere(V, comparaVinho, chave);
-    pilhaDesfazer = empilha(&pilhaDesfazer, V);
+                    printf(" Chocolate\n");
+                    percorreListagen(C, imprimeChocolate);
+                }
+                else if (dp == 2)
+                {
+                    printf(" Vinho\n");
+                    percorreListagen(V, imprimeChocolate);
+                }
+                else if (dp == 3)
+                {
+                    printf(" Livro\n");
+                    percorreListagen(L, imprimeChocolate);
+                }
+                else
+                {
+                    printf(" Filme\n");
+                    percorreListagen(F, imprimeChocolate);
+                }
 
-    percorreListagen(V, imprimeVinho);
+                break;
+            case 4:
+                printf("undo");
+                if (dp == 1)
+                    pilhaDesfazer = desfazer(C, pilhaDesfazer, pilhaRefazer);
+                else if (dp == 2)
+                    pilhaDesfazer = desfazer(C, pilhaDesfazer, pilhaRefazer);
+                else if (dp == 3)
+                    pilhaDesfazer = desfazer(C, pilhaDesfazer, pilhaRefazer);
+                else
+                    pilhaDesfazer = desfazer(C, pilhaDesfazer, pilhaRefazer);
+                printf("\n");
+                break;
+            case 5:
+                printf("redo");
+                break;
+            default:
+                printf("opcao inexistente!");
+                break;
+            }
+        }
+    }
 
-    V = desfazer(V, &pilhaDesfazer, &pilhaResfazer);
-
-    printf("________________________________________\n");
-
-    // Desfaz a inserção
-
-    percorreListagen(V, imprimeVinho);
-    V = refazer(V, &pilhaDesfazer, &pilhaResfazer);
-    printf("________________________________________\n");
-
-    percorreListagen(V, imprimeVinho);
-
-    // Refaz a inserçã
-    // Código de limpeza aqui...
-
-    return 0;
+    return 1;
 }
-// int dp, op;
-
-// while (dp != 0)
-// {
-
-//     printf("Escolha\n");
-//     printf("1 - Chocolate \n");
-//     printf("2 - Vinho\n");
-//     printf("3 - Livro\n");
-//     printf("4 - Filme\n ");
-//     printf("0 - Sair\n");
-//     printf("Digite a opcao: ");
-//     scanf("%d", &dp);
-//     while (op != 0 || dp != 0)
-//     {
-
-//         printf("Opcao: \n");
-//         printf("1 - Inserir \n");
-//         printf("2 - remover \n");
-//         printf("3 - imprimir  \n");
-//         printf("4 - desfazer");
-//         printf("5 - refazer");
-//         printf("0 - Sair \n");
-//         printf("Digite a opcao: ");
-//         scanf("%d", &op);
-//         switch (op)
-//         {
-//         case 0:
-//             printf("Saindo... ");
-//             break;
-//         case 1:
-//             printf("Digite a chave:  ");
-//             printf("\n");
-//             break;
-//         case 2:
-//             printf("Digite a chave: ");
-//             printf("\n");
-//             break;
-//         case 3:
-//             printf("Imprime\n");
-//             percorreListagen(C, imprimeChocolate);
-//             break;
-//         case 4:
-//             printf("undo");
-//             break;
-//         case 5:
-//             printf("redo");
-//             break;
-//         default:
-//             printf("opcao inexistente!");
-//             break;
-//         }
-//     }
-// }

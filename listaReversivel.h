@@ -69,15 +69,6 @@ Versao *desempilha(Versao **V);
 
 // Funções referentes a lista Reversivel
 
-/*
-Função: criaListagen
-Descrição: Aloca dinamicamente uma estrutura ListeGen e inicializa o campo info passando com o dado como parametro.
-Entrada:
-void * dado: Dado genercido.
-Sai­da:
-ponteiro para a estrutura ListaGen  alocada dinâmicamente.
-*/
-ListaGen *copiarLista(ListaGen *L);
 /* Cabeçalhos das funções com suas respectivas descrições */
 
 /*

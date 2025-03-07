@@ -16,32 +16,41 @@ typedef struct livro
 /* Cabeçalhos das funções com suas respectivas descrições */
 
 /*
-Função: criaListagen
-Descrição: Aloca dinamicamente uma estrutura ListeGen e inicializa o campo info passando com o dado como parametro.
+Função: criaLivro
+Descrição: Aloca dinamicamente uma estrutura Livro e inicializa o campo info passando com o dado como parametro.
 Entrada:
-void * dado: Dado genercido.
+char *titulo:
+char *autor:
+char *idioma:
+char *pais:
+int pagina:
+int dia:
+int mes:
+int ano:
 Sai­da:
-ponteiro para a estrutura ListaGen  alocada dinâmicamente.
+ponteiro para a estrutura Livro alocada dinâmicamente.
 */
 livro *criaLivro(char *titulo, char *autor, char *editora, char *idioma, int pagina, int dia, int mes, int ano);
 
 /*
-Função: criaListagen
-Descrição: Aloca dinamicamente uma estrutura ListeGen e inicializa o campo info passando com o dado como parametro.
+Função: comparaLivro
+Descrição: Função responsavel por comparar a chave de busca.
 Entrada:
-void * dado: Dado genercido.
+void * v: chave do nó da lista.
+void *  ch: chave de busca;
 Sai­da:
-ponteiro para a estrutura ListaGen  alocada dinâmicamente.
-*/
+Retorna zero se as chaves forem iguais;
+menor que zero primeiro caractere que não corresponde possui um valor inferior na chave do nó do que na chave de busca;
+maior que zero primeiro caractere que não corresponde possui um valor maior na chave do nó do que na chave de busca;*/
 int comparaLivro(void *v, void *ch);
 
 /*
-Função: criaListagen
-Descrição: Aloca dinamicamente uma estrutura ListeGen e inicializa o campo info passando com o dado como parametro.
+Função: imprimeLivro
+Descrição: Função resposavel  por  imprimir o dado.
 Entrada:
-void * dado: Dado genercido.
+void * dado: Dado genérico a ser impresso.
 Sai­da:
-ponteiro para a estrutura ListaGen  alocada dinâmicamente.
+Nao retorna nada.
 */
 void imprimeLivro(void *v);
 
