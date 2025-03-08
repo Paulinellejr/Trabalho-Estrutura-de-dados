@@ -18,16 +18,7 @@ typedef struct filme
 /**
  * - Função: criaFilme
  * 
- * - Descrição: Aloca dinamicamente uma estrutura Filme e inicializa os campos com os dados passados como parâmetro.
- * 
- * @param titulo Título do filme.
- * @param diretor Nome do diretor do filme.
- * @param distribuidor Nome do distribuidor do filme.
- * @param pais País de origem do filme.
- * @param duracao Duração do filme em segundos.
- * @param dia Dia de lançamento do filme.
- * @param mes Mês de lançamento do filme.
- * @param ano Ano de lançamento do filme.
+ * - Descrição: Aloca dinamicamente uma estrutura Filme e inicializa seus campos.
  * 
  * @return Retorna um ponteiro para a estrutura Filme alocada dinamicamente.
  */

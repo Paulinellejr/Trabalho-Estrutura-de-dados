@@ -18,17 +18,7 @@ typedef struct vinho
 /**
  * - Função: criaVinho
  * 
- * - Descrição: Aloca dinamicamente uma estrutura Vinho e inicializa os campos com os dados passados como parâmetro.
- * 
- * @param nome Nome do vinho.
- * @param pais País de origem do vinho.
- * @param regiao Região de origem do vinho.
- * @param tipo Tipo de vinho (ex: tinto, branco).
- * @param vinicola Nome da vinícola.
- * @param uva Tipo de uva utilizada.
- * @param dia Dia da data de fabricação.
- * @param mes Mês da data de fabricação.
- * @param ano Ano da data de fabricação.
+ * - Descrição: Aloca dinamicamente uma estrutura Vinho e inicializa seus campos.
  * 
  * @return Retorna um ponteiro para a estrutura Vinho alocada dinamicamente.
  */

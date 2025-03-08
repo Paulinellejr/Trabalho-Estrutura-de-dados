@@ -19,7 +19,7 @@ typedef struct livro
 /**
  * - Função: criaLivro
  * 
- * - Descrição: Aloca dinamicamente uma estrutura Livro e inicializa os campos com os dados passados como parâmetro.
+ * - Descrição: Aloca dinamicamente uma estrutura Livro e inicializa seus campos.
  * 
  * @return Retorna um ponteiro para a estrutura Livro alocada dinamicamente.
  */

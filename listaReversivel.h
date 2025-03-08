@@ -42,7 +42,7 @@ typedef struct versao
 /**
  * - Função: criaVersao
  *
- * - Descrição: Aloca dinamicamente uma estrutura Versao e inicializa a lista com o dado passado como parâmetro.
+ * - Descrição: Aloca dinamicamente uma estrutura Versao e inicializa a lista.
  *
  * @param L Ponteiro para a lista genérica.
  *

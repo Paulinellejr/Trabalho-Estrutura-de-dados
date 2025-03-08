@@ -2,9 +2,11 @@
 #define __CHOCOLATE_H__
 
 /* Inclusão de bibliotecas necessárias para o pacote */
+
 #include "listaReversivel.h"
 
 /* Definição de estruturas e declaração de variáveis locais */
+
 typedef struct chocolate
 {
     char nome[TAM], marca[TAM], origem[TAM], tipo[TAM]; // ao leite, amargo ou branco
@@ -15,16 +17,8 @@ typedef struct chocolate
 /**
  * - Função: criaChocolate
  * 
- * - Descrição: Aloca dinamicamente uma estrutura Chocolate e inicializa os campos da estrutura com os dados passados como parâmetros.
+ * - Descrição: Aloca dinamicamente uma estrutura Chocolate e inicializa seus campos.
  * 
- * @param nome Nome do chocolate.
- * @param marca Marca do chocolate.
- * @param origem Origem do chocolate.
- * @param tipo Tipo do chocolate (ao leite, amargo ou branco).
- * @param porcentagem Percentual de cacau no chocolate.
- * @param peso Peso do chocolate.
- * @param fDia, fMes, fAno Data de fabricação do chocolate.
- * @param vDia, vMes, vAno Data de validade do chocolate.
  * @return Retorna um ponteiro para a estrutura Chocolate alocada dinamicamente.
  */
 chocolate *criaChocolate();
