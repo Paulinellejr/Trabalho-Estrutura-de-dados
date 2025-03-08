@@ -9,7 +9,7 @@ vinho *criaVinho()
         return NULL;
     }
 
-    printf("\nNome: ");
+    printf("Nome: ");
     getc(stdin);
     scanf("%[^\n]", novo->nome);
 
@@ -33,9 +33,8 @@ vinho *criaVinho()
     getc(stdin);
     scanf("%[^\n]", novo->regiao);
 
-    printf("\nAno da fabricacao: ");
-    getc(stdin);
-    scanf("%[^\n]", novo->fabricacao);
+    printf("Ano da fabricacao: ");
+    scanf("%d", &novo->fabricacao);
 
     return novo;
 }
@@ -56,5 +55,5 @@ void imprimeVinho(void *v)
     printf("Uva: %s\n", aux->uva);
     printf("Regiao: %s\n", aux->regiao);
     printf("Tipo: %s\n", aux->tipo);
-    printf("Ano de fabricacao: %s\n", aux->fabricacao);
+    printf("Ano de fabricacao: %d\n", aux->fabricacao);
 }

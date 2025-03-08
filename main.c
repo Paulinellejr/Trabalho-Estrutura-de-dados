@@ -263,7 +263,7 @@ int main()
                     break;
 
                 default:
-                    printf("Opcao inexistente!\n");
+                    printf("\nOpcao inexistente!\n");
                     printf("\nPressione 'Enter' para continuar...\n");
                     getc(stdin);
                     getc(stdin);
@@ -273,7 +273,11 @@ int main()
         }
         else if (dp != 5)
         {
-            printf("\nERRO: OPCAO INEXISTENTE!\n");
+            system("cls || clear");
+            printf("\nOPCAO INEXISTENTE!\n");
+            printf("\nPressione 'Enter' para continuar...\n");
+            getc(stdin);
+            getc(stdin);
         }
     }
     system("cls || clear");
