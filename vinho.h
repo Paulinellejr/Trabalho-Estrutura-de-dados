@@ -15,7 +15,7 @@ typedef struct vinho
     char uva[TAM];         // Tipo de uva utilizada.
     char regiao[TAM];      // Região de origem do vinho.
     char tipo[TAM];        // Tipo de vinho (ex: tinto, branco).
-    int fabricacao;        // Ano de fabricação do vinho.
+    char fabricacao;        // Ano de fabricação do vinho.
 } vinho;
 
 /* Cabeçalhos das funções com suas respectivas descrições */

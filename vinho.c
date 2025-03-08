@@ -9,14 +9,6 @@ vinho *criaVinho()
         return NULL;
     }
 
-    novo->fabricacao = (data *)malloc(sizeof(data));
-    if (novo->fabricacao == NULL)
-    {
-        printf("Erro ao alocar memoria para data.\n");
-        free(novo);
-        return NULL;
-    }
-
     printf("\nNome: ");
     getc(stdin);
     scanf("%[^\n]", novo->nome);
@@ -41,8 +33,9 @@ vinho *criaVinho()
     getc(stdin);
     scanf("%[^\n]", novo->regiao);
 
-    printf("Ano da fabricacao {dd mm aa}: ");
-    scanf("%d", novo->fabricacao, novo->fabricacao, novo->fabricacao);
+    printf("\nAno da fabricacao: ");
+    getc(stdin);
+    scanf("%[^\n]", novo->fabricacao);
 
     return novo;
 }
@@ -63,5 +56,5 @@ void imprimeVinho(void *v)
     printf("Uva: %s\n", aux->uva);
     printf("Regiao: %s\n", aux->regiao);
     printf("Tipo: %s\n", aux->tipo);
-    printf("Ano de fabricacao: %d\n", aux->fabricacao);
+    printf("Ano de fabricacao: %s\n", aux->fabricacao);
 }
