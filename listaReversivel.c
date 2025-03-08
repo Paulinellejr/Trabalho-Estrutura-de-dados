@@ -69,7 +69,7 @@ Versao *destroiAntigo(Versao *V)
     return V;
 }
 
-Versao *esvazia(Versao *V)
+Versao *esvaziar(Versao *V)
 {
     Versao *aux = V;
     ListaGen *auxL;

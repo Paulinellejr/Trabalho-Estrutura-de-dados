@@ -14,7 +14,7 @@ typedef struct chocolate
     char origem[TAM];   // Origem do chocolate
     char tipo[TAM];     // Tipo do chocolate (ao leite, amargo ou branco)
     float porcentagem;  // percentual de cacau no chocolate
-    floatpeso;          // Peso do chocolate
+    float peso;          // Peso do chocolate
     data *fabricacao;   // Data de fabricação do chocolate
     data *validade;     // Data de validade do chocolate
 } chocolate;
