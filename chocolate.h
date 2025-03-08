@@ -31,7 +31,7 @@ int vAno:
 Sai­da:
 ponteiro para a estrutura Chocolate alocada dinâmicamente.
 */
-chocolate *criaChocolate(char *nome, char *marca, char *origem, char *tipo, float porcentagem, float peso, int fDia, int fMes, int fAno, int vDia, int vMes, int vAno);
+chocolate *criaChocolate();
 
 /*
 Função: comparaChocolate

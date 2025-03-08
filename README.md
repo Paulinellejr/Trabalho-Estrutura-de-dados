@@ -29,64 +29,64 @@ Os dados que devem ser gerenciados pelo sistema para cada tipo de produto inclue
 
 - Chocolate:
   
-    * Nome (chave de busca);
+  - Nome (chave de busca);
   
-    * Marca;
+  - Marca;
   
-    * Tipo de chocolate (ao leite, amargo ou branco);
+  - Tipo de chocolate (ao leite, amargo ou branco);
   
-    * Porcentagem de cacau (para chocolates amargos);
+  - Porcentagem de cacau (para chocolates amargos);
   
-    * Nacionalidade ou origem;
+  - Nacionalidade ou origem;
   
-    * Peso;
+  - Peso;
   
-    * Data de fabricação;
+  - Data de fabricação;
   
-    * Validade;
+  - Validade;
 - Vinho:
   
-    * Nome (chave de busca);
+  - Nome (chave de busca);
   
-    * Vinícola;
+  - Vinícola;
   
-    * Tipo (tinto, branco, rosé, espumante branco, espumante rosé);
+  - Tipo (tinto, branco, rosé, espumante branco, espumante rosé);
   
-    * País;
+  - País;
   
-    * Uva;
+  - Uva;
   
-    * Região;
+  - Região;
   
-    * Ano de fabricação;
+  - Ano de fabricação;
   
 - Livro:
   
-    * Título (chave de busca);
+  - Título (chave de busca);
 
-    * Autor;
+  - Autor;
 
-    * Editora;
+  - Editora;
 
-    * Data de publicaçãogenéricos;
+  - Data de publicaçãogenéricos;
 
-    * Idioma;
+  - Idioma;
 
-    * Número de páginas;
+  - Número de páginas;
 
 - Filme:
   
-    * Título (chave de busca);
+  - Título (chave de busca);
   
-    * Diretor;
+  - Diretor;
   
-    * Gênero;
+  - Gênero;
   
-    * Distribuidor;
+  - Distribuidor;
   
-    * Duração;
+  - Duração;
   
-    * País de origem;
+  - País de origem;
   
 Com base nesses requisitos, Vianne contratou sua empresa para desenvolver o sistema de
 gerenciamento das listas de produtos. Seu supervisor imediato lhe solicitou que a estrutura de
@@ -123,7 +123,6 @@ a nova lista [2,6,7] após excluir(5), apontada pelo ponteiro de cabeça h’. C
 permanecem inalterados, eles são compartilhados tanto pela lista [2,5,6,7] quanto pela [2,6,7].
 
 ![Screenshot From 2025-03-06 02-29-35](https://github.com/user-attachments/assets/929f97b8-4f82-47f1-996f-de1ef73953bc)
-
 
 ## 3 Objetivo do Trabalho
 

@@ -1,7 +1,7 @@
 
 #include "livro.h"
 
-livro *criaLivro(char *titulo, char *autor, char *editora, char *idioma, int pagina, int dia, int mes, int ano)
+livro *criaLivro()
 {
     livro *novo = (livro *)malloc(sizeof(livro));
     if (novo == NULL)
@@ -18,14 +18,22 @@ livro *criaLivro(char *titulo, char *autor, char *editora, char *idioma, int pag
         return NULL;
     }
 
-    strcpy(novo->titulo, titulo);
-    strcpy(novo->autor, autor);
-    strcpy(novo->editora, editora);
-    strcpy(novo->idioma, idioma);
-    novo->paginas = pagina;
-    novo->publicacao->dia = dia;
-    novo->publicacao->mes = mes;
-    novo->publicacao->ano = ano;
+    printf("Titulo: ");
+    getc(stdin);
+    scanf("%[^\n]", novo->titulo);
+    printf("Autor: ");
+    getc(stdin);
+    scanf("%[^\n]", novo->titulo);
+    printf("Editora: ");
+    getc(stdin);
+    scanf("%[^\n]", novo->editora);
+    printf("Idioma: ");
+    getc(stdin);
+    scanf("%[^\n]", novo->idioma);
+    printf("Quantidade de paginas: ");
+    scanf("%d", &novo->paginas);
+    printf("Data de publiicacao {dd mm aa} : ");
+    scanf("%d %d %d", &novo->publicacao->dia, &novo->publicacao->mes, &novo->publicacao->ano);
 
     return novo;
 }

@@ -1,8 +1,8 @@
 #include "vinho.h"
 
-vinho *criaVinho(char *nome, char *pais, char *regiao, char *tipo, char *vinicola, char *uva, int dia, int mes, int ano)
+vinho *criaVinho()
 {
-    vinho *novo = (vinho *)malloc(sizeof(vinho));
+    vinho *novo = (vinho *)calloc(1, sizeof(vinho));
     if (novo == NULL)
     {
         printf("Erro ao alocar memória para vinho.\n");
@@ -17,16 +17,27 @@ vinho *criaVinho(char *nome, char *pais, char *regiao, char *tipo, char *vinicol
         return NULL;
     }
 
-    strcpy(novo->nome, nome);
-    strcpy(novo->pais, pais);
-    strcpy(novo->regiao, regiao);
-    strcpy(novo->tipo, tipo);
-    strcpy(novo->vinicola, vinicola);
-    strcpy(novo->uva, uva);
+    printf("\nNome: ");
+    getc(stdin);
+    scanf("%[^\n]", novo->nome);
+    printf("Viculo: ");
+    getc(stdin);
+    scanf("%[^\n]", novo->vinicola);
+    printf("Tipo (tinto, branco, rosé, espumante branco, espumante rosé): ");
+    getc(stdin);
+    scanf("%[^\n]", novo->tipo);
+    printf("Pais: ");
+    getc(stdin);
+    scanf("%[^\n]", novo->pais);
+    printf("Uva: ");
+    getc(stdin);
+    scanf("%[^\n]", novo->uva);
+    printf("Regiao: ");
+    getc(stdin);
+    scanf("%[^\n]", novo->regiao);
+    printf("Ano da fabricação {dd mm aa} : ");
+    scanf("%d %d %d", &novo->fabricacao->dia, &novo->fabricacao->mes, &novo->fabricacao->ano);
 
-    novo->fabricacao->ano = ano;
-    novo->fabricacao->mes = mes;
-    novo->fabricacao->dia = dia;
     return novo;
 }
 

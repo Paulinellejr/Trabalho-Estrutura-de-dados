@@ -29,7 +29,7 @@ int ano:
 Sai­da:
 ponteiro para a estrutura Vinho alocada dinâmicamente.
 */
-vinho *criaVinho(char *nome, char *pais, char *regiao, char *tipo, char *vinicola, char *uva, int dia, int mes, int ano);
+vinho *criaVinho();
 
 /*
 Função: comparaVinho
