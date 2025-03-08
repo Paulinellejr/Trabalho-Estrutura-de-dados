@@ -26,6 +26,7 @@ typedef struct listagen
 typedef struct versao
 {
     ListaGen *Lista;
+    int quantV;
     struct versao *prox;
 
 } Versao;
@@ -64,6 +65,16 @@ ponteiro para a estrutura ListaGen  alocada dinâmicamente.
 */
 
 Versao *desempilha(Versao **V);
+
+/*
+Função: criaListagen
+Descrição: Aloca dinamicamente uma estrutura ListeGen e inicializa o campo info passando com o dado como parametro.
+Entrada:
+void * dado: Dado genercido.
+Sai­da:
+ponteiro para a estrutura ListaGen  alocada dinâmicamente.
+*/
+Versao *destroeAntigo(Versao *V);
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -107,7 +118,7 @@ void *ch: chave de busca a ser inserida.
 Sai­da:
 ponteiro para a estrutura ListaGen alocada dinâmicamente.
 */
-ListaGen *Busca(ListaGen *L, int (*cb)(void *, void *), void *ch);
+ListaGen *busca(ListaGen *L, int (*cb)(void *, void *), void *ch);
 
 /*
 Função: remove

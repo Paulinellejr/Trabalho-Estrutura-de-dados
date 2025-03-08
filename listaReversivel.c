@@ -41,6 +41,29 @@ Versao *desempilha(Versao **V)
     return aux;
 }
 
+Versao *destroeAntigo(Versao *V)
+{
+    Versao *aux = V;
+    Versao *pred = NULL;
+    ListaGen *auxL;
+    ListaGen *temp;
+    while (aux->prox != NULL)
+    {
+        pred = aux;
+        aux = aux->prox;
+    }
+    pred->prox = NULL;
+    auxL = aux->Lista;
+    while (auxL != NULL)
+    {
+        temp = auxL;
+        auxL = auxL->prox;
+        free(temp);
+    }
+    free(aux);
+    return V;
+}
+
 ListaGen *insere(ListaGen *L, int (*cb)(void *, void *), void *ch)
 {
     ListaGen *aux = L;
@@ -131,20 +154,12 @@ void percorreListagen(ListaGen *L, void (*cb)(void *))
     }
 }
 
-ListaGen *Busca(ListaGen *L, int (*cb)(void *, void *), void *ch)
+ListaGen *busca(ListaGen *L, int (*cb)(void *, void *), void *ch)
 {
     ListaGen *aux = L;
     while (aux != NULL && cb(aux->info, ch) != 0)
     {
         aux = aux->prox;
-    }
-    if (aux != NULL)
-    {
-        printf("\nProduto encotrada!\n");
-    }
-    else
-    {
-        printf("\nProduto nao encotrado!\n");
     }
     return aux;
 }

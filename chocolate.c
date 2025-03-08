@@ -1,8 +1,9 @@
+
 #include "chocolate.h"
 
-chocolate *criaChocolate(char *nome, char *marca, char *origem, char *tipo, float porcentagem, float peso, int fDia, int fMes, int fAno, int vDia, int vMes, int vAno)
+chocolate *criaChocolate()
 {
-    chocolate *novo = (chocolate *)malloc(sizeof(chocolate));
+    chocolate *novo = (chocolate *)calloc(1, sizeof(chocolate));
     if (novo == NULL)
     {
         printf("Erro ao alocar memória para chocolate.\n");
@@ -12,31 +13,38 @@ chocolate *criaChocolate(char *nome, char *marca, char *origem, char *tipo, floa
     novo->fabricacao = (data *)malloc(sizeof(data));
     if (novo->fabricacao == NULL)
     {
-        printf("Erro ao alocar memória para data de fabricação.\n");
+        printf("Erro ao alocar memória para data.\n");
         free(novo);
         return NULL;
     }
-
     novo->validade = (data *)malloc(sizeof(data));
     if (novo->validade == NULL)
     {
-        printf("Erro ao alocar memória para data de validade.\n");
+        printf("Erro ao alocar memória para data.\n");
         free(novo);
         return NULL;
     }
 
-    strcpy(novo->nome, nome);
-    strcpy(novo->marca, marca);
-    strcpy(novo->origem, origem);
-    strcpy(novo->tipo, tipo);
-    novo->porcentagem = porcentagem;
-    novo->peso = peso;
-    novo->fabricacao->dia = fDia;
-    novo->fabricacao->mes = fMes;
-    novo->fabricacao->ano = fAno;
-    novo->validade->dia = vDia;
-    novo->validade->mes = vMes;
-    novo->validade->ano = vAno;
+    printf("Nome: ");
+    getc(stdin);
+    scanf("%[^\n]", novo->nome);
+    printf("Marca: ");
+    getc(stdin);
+    scanf("%[^\n]", novo->marca);
+    printf("Tipo de chocolate (ao leite, amargo ou branco): ");
+    getc(stdin);
+    scanf("%[^\n]", novo->tipo);
+    if (strcmp(novo->tipo, "amargo") == 0)
+    {
+        printf("Porcentagem de cacau: ");
+        scanf("%f", &novo->porcentagem);
+    }
+    printf("Quantidade de paginas: ");
+    scanf("%f", &novo->peso);
+    printf("Data da fabricação {dd mm aa}: ");
+    scanf("%d %d %d", &novo->fabricacao->dia, &novo->fabricacao->mes, &novo->fabricacao->ano);
+    printf("Data da Validade {dd mm aa}: ");
+    scanf("%d %d %d", &novo->validade->dia, &novo->validade->mes, &novo->validade->ano);
 
     return novo;
 }

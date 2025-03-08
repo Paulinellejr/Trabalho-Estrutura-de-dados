@@ -1,6 +1,6 @@
 #include "filme.h"
 
-filme *criaFilme(char *titulo, char *diretor, char *distribuidor, char *pais, int duracao, int dia, int mes, int ano)
+filme *criaFilme()
 {
     filme *novo = (filme *)malloc(sizeof(filme));
     if (novo == NULL)
@@ -9,22 +9,23 @@ filme *criaFilme(char *titulo, char *diretor, char *distribuidor, char *pais, in
         return NULL;
     }
 
-    novo->publicacao = (data *)malloc(sizeof(data));
-    if (novo->publicacao == NULL)
-    {
-        printf("Erro ao alocar memória para data de publicação.\n");
-        free(novo);
-        return NULL;
-    }
-
-    strcpy(novo->titulo, titulo);
-    strcpy(novo->diretor, diretor);
-    strcpy(novo->distribuidor, distribuidor);
-    strcpy(novo->pais, pais);
-    novo->duracao = duracao;
-    novo->publicacao->dia = dia;
-    novo->publicacao->mes = mes;
-    novo->publicacao->ano = ano;
+    printf("Titulo: ");
+    getc(stdin);
+    scanf("%[^\n]", novo->titulo);
+    printf("Diretor: ");
+    getc(stdin);
+    scanf("%[^\n]", novo->diretor);
+    printf("Genero: ");
+    getc(stdin);
+    scanf("%[^\n]", novo->genero);
+    printf("distribuidor: ");
+    getc(stdin);
+    scanf("%[^\n]", novo->distribuidor);
+    printf("Duração do filme me minutos: ");
+    scanf(" %d ", &novo->duracao);
+    printf("Pais de origem: ");
+    getc(stdin);
+    scanf("%[^\n]", novo->pais);
 
     return novo;
 }
@@ -42,7 +43,6 @@ void imprimeFilme(void *v)
     printf("\nTitulo: %s\n", aux->titulo);
     printf("Diretor: %s\n", aux->diretor);
     printf("Distribuidor: %s\n", aux->distribuidor);
-    printf("Pais: %s\n", aux->pais);
     printf("Duração: %dmin\n", aux->duracao);
-    printf("Publicação: %d/%d/%d\n", aux->publicacao->dia, aux->publicacao->mes, aux->publicacao->ano);
+    printf("Pais: %s\n", aux->pais);
 }

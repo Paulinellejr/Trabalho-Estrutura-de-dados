@@ -19,18 +19,11 @@ typedef struct livro
 Função: criaLivro
 Descrição: Aloca dinamicamente uma estrutura Livro e inicializa o campo info passando com o dado como parametro.
 Entrada:
-char *titulo:
-char *autor:
-char *idioma:
-char *pais:
-int pagina:
-int dia:
-int mes:
-int ano:
+Nao a entrada.
 Sai­da:
 ponteiro para a estrutura Livro alocada dinâmicamente.
 */
-livro *criaLivro(char *titulo, char *autor, char *editora, char *idioma, int pagina, int dia, int mes, int ano);
+livro *criaLivro();
 
 /*
 Função: comparaLivro

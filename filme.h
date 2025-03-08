@@ -9,7 +9,6 @@ typedef struct filme
 {
     char titulo[TAM], diretor[TAM], genero[TAM], distribuidor[TAM], pais[TAM];
     int duracao; // em segundos
-    data *publicacao;
 } filme;
 
 /* Cabeçalhos das funções com suas respectivas descrições */
@@ -29,7 +28,7 @@ int ano:
 Sai­da:
 ponteiro para a estrutura Filme alocada dinâmicamente.
 */
-filme *criaFilme(char *titulo, char *diretor, char *distribuidor, char *pais, int duracao, int dia, int mes, int ano);
+filme *criaFilme();
 
 /*
 Função: comparaFilme
