@@ -9,9 +9,14 @@
 
 typedef struct chocolate
 {
-    char nome[TAM], marca[TAM], origem[TAM], tipo[TAM]; // ao leite, amargo ou branco
-    float porcentagem, peso;
-    data *fabricacao, *validade;
+    char nome[TAM];     // Nome do chocolate
+    char marca[TAM];    // Marca do chocolate
+    char origem[TAM];   // Origem do chocolate
+    char tipo[TAM];     // Tipo do chocolate (ao leite, amargo ou branco)
+    float porcentagem;  // percentual de cacau no chocolate
+    floatpeso;          // Peso do chocolate
+    data *fabricacao;   // Data de fabricação do chocolate
+    data *validade;     // Data de validade do chocolate
 } chocolate;
 
 /**

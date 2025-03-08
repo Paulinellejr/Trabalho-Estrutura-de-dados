@@ -9,8 +9,12 @@
 
 typedef struct filme
 {
-    char titulo[TAM], diretor[TAM], genero[TAM], distribuidor[TAM], pais[TAM];
-    int duracao; // em segundos
+    char titulo[TAM];         // Título do filme
+    char diretor[TAM];        // Nome do diretor do filme
+    char genero[TAM];         // Genero do filme
+    char distribuidor[TAM];   // Nome do distribuidor do filme
+    char pais[TAM];           // País de origem do filme
+    int duracao;              // Duração do filme em segundos
 } filme;
 
 /* Cabeçalhos das funções com suas respectivas descrições */

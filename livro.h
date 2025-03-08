@@ -9,9 +9,12 @@
 
 typedef struct livro
 {
-    char titulo[TAM], autor[TAM], editora[TAM], idioma[TAM];
-    int paginas;
-    data *publicacao;
+    char titulo[TAM];     // Título do livro.
+    char autor[TAM];      // Nome do autor do livro.
+    char editora[TAM];    // Nome da editora do livro.
+    char idioma[TAM];     // Idioma em que o livro está escrito.
+    int paginas;          // Número de páginas que o livro possui.
+    data *publicacao;     // Data de publicação do Livro.
 } livro;
 
 /* Cabeçalhos das funções com suas respectivas descrições */

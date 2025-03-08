@@ -16,7 +16,7 @@
 
 typedef struct data
 {
-    int dia, mes, ano;
+    int dia, mes, ano; // Data de fabricação, validade ou publicação de um produto
 } data;
 
 typedef struct listagen
