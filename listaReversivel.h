@@ -85,15 +85,15 @@ Versao *desempilha(Versao **V);
 Versao *destroiAntigo(Versao *V);
 
 /**
- * - Função: esvazia
+ * - Função: esvaziar
  *
- * - Descrição:Esvazia  uma lista do tipo Versão.
+ * - Descrição: Esvazia uma lista do tipo Versão.
  *
  * @param V Ponteiro para a pilha de versões.
  *
  * @return Retorna a pilha de versões com as versões antigas removidas.
  */
-Versao *esvazia(Versao *V);
+Versao *esvaziar(Versao *V);
 
 ////////////////////////////////////////////////////////////////////////
 
