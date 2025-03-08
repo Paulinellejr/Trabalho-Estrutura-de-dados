@@ -22,7 +22,7 @@ int main()
 
     while (dp != 5)
     {
-        system("cls");
+        system("cls || clear");
         printf("\n+----------------------------+\n");
         printf("|     ESCOLHA UM PRODUTO     |\n");
         printf("+----------------------------+\n");
@@ -40,7 +40,7 @@ int main()
             op = 0;
             while (op != 7 && dp != 5)
             {
-                system("cls");
+                system("cls || clear");
                 printf("\n+----------------------------+\n");
                 printf("|     ESTOQUE DO PRODUTO     |\n");
                 printf("+----------------------------+\n");
@@ -54,12 +54,22 @@ int main()
                 printf("------------------------------\n");
                 printf("Digite a opcao: ");
                 scanf("%d", &op);
-                system("cls");
+                system("cls || clear");
 
                 switch (op)
                 {
                 case 7:
-                    system("cls");
+                    if (dp == 1)
+                        C = copiaLista(C);
+                    else if (dp == 2)
+                        V = copiaLista(V);
+                    else if (dp == 3)
+                        L = copiaLista(L);
+                    else
+                        F = copiaLista(F);
+                    pilhaDesfazer = esvaziar(pilhaDesfazer);
+                    pilhaRefazer = esvaziar(pilhaRefazer);
+                    system("cls || clear");
                     break;
 
                 case 1:
@@ -266,7 +276,7 @@ int main()
             printf("\nERRO: OPCAO INEXISTENTE!\n");
         }
     }
-    system("cls");
+    system("cls || clear");
 
     printf("\n+----------------------------+\n");
     printf("|    RELATORIO DE ESTOQUE    |\n");

@@ -70,7 +70,7 @@ void imprimeChocolate(void *v)
     printf("Marca: %s\n", aux->marca);
     printf("Origem: %s\n", aux->origem);
     printf("Tipo: %s\n", aux->tipo);
-    if (strcmp("amargo", aux->tipo) == 0)
+    if (aux->porcentagem)
     {
         printf("Porcentagem: %.1f%%\n", aux->porcentagem);
     }

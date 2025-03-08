@@ -69,6 +69,51 @@ Versao *destroiAntigo(Versao *V)
     return V;
 }
 
+Versao *esvazia(Versao *V)
+{
+    Versao *aux = V;
+    ListaGen *auxL;
+    ListaGen *temp;
+
+    while (V != NULL)
+    {
+        aux = V;
+        V = aux->prox;
+        auxL = aux->Lista;
+        while (auxL != NULL)
+        {
+            temp = auxL;
+            auxL = auxL->prox;
+            free(temp);
+        }
+        free(aux);
+    }
+
+    return V;
+}
+
+ListaGen *copiaLista(ListaGen *L)
+{
+    ListaGen *L2 = NULL;
+    ListaGen *aux = L;
+    ListaGen *aux2 = NULL;
+    while (aux != NULL)
+    {
+        if (L2 == NULL)
+        {
+            L2 = criaListagen(L->info);
+            aux2 = L2;
+        }
+        else
+        {
+            aux2->prox = criaListagen(aux->info);
+            aux2 = aux2->prox;
+        }
+        aux = aux->prox;
+    }
+    return L2;
+}
+
 ListaGen *insere(ListaGen *L, int (*cb)(void *, void *), void *ch)
 {
     if (busca(L, cb, ch) != NULL)
