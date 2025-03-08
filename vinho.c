@@ -42,7 +42,7 @@ vinho *criaVinho()
     scanf("%[^\n]", novo->regiao);
 
     printf("Ano da fabricacao {dd mm aa}: ");
-    scanf("%d %d %d", &novo->fabricacao->dia, &novo->fabricacao->mes, &novo->fabricacao->ano);
+    scanf("%d", novo->fabricacao, novo->fabricacao, novo->fabricacao);
 
     return novo;
 }
@@ -63,5 +63,5 @@ void imprimeVinho(void *v)
     printf("Uva: %s\n", aux->uva);
     printf("Regiao: %s\n", aux->regiao);
     printf("Tipo: %s\n", aux->tipo);
-    printf("Fabricacao: %d/%d/%d\n", aux->fabricacao->dia, aux->fabricacao->mes, aux->fabricacao->ano);
+    printf("Ano de fabricacao: %d\n", aux->fabricacao);
 }
