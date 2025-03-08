@@ -1,4 +1,3 @@
-
 #include "livro.h"
 
 livro *criaLivro()
@@ -6,14 +5,14 @@ livro *criaLivro()
     livro *novo = (livro *)malloc(sizeof(livro));
     if (novo == NULL)
     {
-        printf("Erro ao alocar memória para livro.\n");
+        printf("Erro ao alocar memoria para livro.\n");
         return NULL;
     }
 
     novo->publicacao = (data *)malloc(sizeof(data));
     if (novo->publicacao == NULL)
     {
-        printf("Erro ao alocar memória para data.\n");
+        printf("Erro ao alocar memoria para data de publicacao.\n");
         free(novo);
         return NULL;
     }
@@ -21,18 +20,23 @@ livro *criaLivro()
     printf("Titulo: ");
     getc(stdin);
     scanf("%[^\n]", novo->titulo);
+
     printf("Autor: ");
     getc(stdin);
-    scanf("%[^\n]", novo->titulo);
+    scanf("%[^\n]", novo->autor);
+
     printf("Editora: ");
     getc(stdin);
     scanf("%[^\n]", novo->editora);
+
     printf("Idioma: ");
     getc(stdin);
     scanf("%[^\n]", novo->idioma);
+
     printf("Quantidade de paginas: ");
     scanf("%d", &novo->paginas);
-    printf("Data de publiicacao {dd mm aa} : ");
+
+    printf("Data de publicacao {dd mm aa}: ");
     scanf("%d %d %d", &novo->publicacao->dia, &novo->publicacao->mes, &novo->publicacao->ano);
 
     return novo;
@@ -53,5 +57,5 @@ void imprimeLivro(void *v)
     printf("Editora: %s\n", aux->editora);
     printf("Idioma: %s\n", aux->idioma);
     printf("Paginas: %d\n", aux->paginas);
-    printf("Publicação: %d/%d/%d\n", aux->publicacao->dia, aux->publicacao->mes, aux->publicacao->ano);
+    printf("Publicacao: %d/%d/%d\n", aux->publicacao->dia, aux->publicacao->mes, aux->publicacao->ano);
 }

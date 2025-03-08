@@ -5,14 +5,14 @@ vinho *criaVinho()
     vinho *novo = (vinho *)calloc(1, sizeof(vinho));
     if (novo == NULL)
     {
-        printf("Erro ao alocar memória para vinho.\n");
+        printf("Erro ao alocar memoria para vinho.\n");
         return NULL;
     }
 
     novo->fabricacao = (data *)malloc(sizeof(data));
     if (novo->fabricacao == NULL)
     {
-        printf("Erro ao alocar memória para data.\n");
+        printf("Erro ao alocar memoria para data.\n");
         free(novo);
         return NULL;
     }
@@ -20,22 +20,28 @@ vinho *criaVinho()
     printf("\nNome: ");
     getc(stdin);
     scanf("%[^\n]", novo->nome);
-    printf("Viculo: ");
+
+    printf("Vinicola: ");
     getc(stdin);
     scanf("%[^\n]", novo->vinicola);
-    printf("Tipo (tinto, branco, rosé, espumante branco, espumante rosé): ");
+
+    printf("Tipo (tinto, branco, rose, espumante branco, espumante rose): ");
     getc(stdin);
     scanf("%[^\n]", novo->tipo);
+
     printf("Pais: ");
     getc(stdin);
     scanf("%[^\n]", novo->pais);
+
     printf("Uva: ");
     getc(stdin);
     scanf("%[^\n]", novo->uva);
+
     printf("Regiao: ");
     getc(stdin);
     scanf("%[^\n]", novo->regiao);
-    printf("Ano da fabricação {dd mm aa} : ");
+
+    printf("Ano da fabricacao {dd mm aa}: ");
     scanf("%d %d %d", &novo->fabricacao->dia, &novo->fabricacao->mes, &novo->fabricacao->ano);
 
     return novo;
@@ -57,5 +63,5 @@ void imprimeVinho(void *v)
     printf("Uva: %s\n", aux->uva);
     printf("Regiao: %s\n", aux->regiao);
     printf("Tipo: %s\n", aux->tipo);
-    printf("Fabricação: %d/%d/%d\n", aux->fabricacao->dia, aux->fabricacao->mes, aux->fabricacao->ano);
+    printf("Fabricacao: %d/%d/%d\n", aux->fabricacao->dia, aux->fabricacao->mes, aux->fabricacao->ano);
 }

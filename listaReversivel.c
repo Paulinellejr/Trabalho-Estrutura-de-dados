@@ -11,12 +11,13 @@ Versao *criaVersao(ListaGen *L)
     novaV->Lista = L;
     return novaV;
 }
+
 ListaGen *criaListagen(void *dado)
 {
     ListaGen *novo = (ListaGen *)calloc(1, sizeof(ListaGen));
     if (!novo)
     {
-        printf("Nao foi possivel alocar memoria!");
+        printf("ERRO: Nao foi possivel alocar memoria!");
         exit(1);
     }
     novo->info = dado;
@@ -41,12 +42,13 @@ Versao *desempilha(Versao **V)
     return aux;
 }
 
-Versao *destroeAntigo(Versao *V)
+Versao *destroiAntigo(Versao *V)
 {
     Versao *aux = V;
     Versao *pred = NULL;
     ListaGen *auxL;
     ListaGen *temp;
+
     while (aux->prox != NULL)
     {
         pred = aux;
@@ -54,18 +56,27 @@ Versao *destroeAntigo(Versao *V)
     }
     pred->prox = NULL;
     auxL = aux->Lista;
+
     while (auxL != NULL)
     {
         temp = auxL;
         auxL = auxL->prox;
         free(temp);
     }
+
     free(aux);
+
     return V;
 }
 
 ListaGen *insere(ListaGen *L, int (*cb)(void *, void *), void *ch)
 {
+    if (busca(L, cb, ch) != NULL)
+    {
+        printf("\nNao foi possivel inserir: chave ja existente na lista.\n");
+        return L; // Retorna a lista original sem modificar
+    }
+
     ListaGen *aux = L;
     ListaGen *novo = criaListagen(ch);
     ListaGen *aux2 = NULL;
@@ -75,6 +86,7 @@ ListaGen *insere(ListaGen *L, int (*cb)(void *, void *), void *ch)
     {
         return novo;
     }
+
     while (aux->prox != NULL && cb(aux->info, ch) < 0)
     {
         if (L2 == NULL)
@@ -89,6 +101,7 @@ ListaGen *insere(ListaGen *L, int (*cb)(void *, void *), void *ch)
         }
         aux = aux->prox;
     }
+
     if (aux2 == NULL)
     {
         novo->prox = L;
@@ -99,6 +112,7 @@ ListaGen *insere(ListaGen *L, int (*cb)(void *, void *), void *ch)
         novo->prox = aux;
         aux2->prox = novo;
     }
+    printf("\nItem inserido com sucesso!\n");
     return L2;
 }
 
@@ -109,11 +123,13 @@ ListaGen *removeChave(ListaGen *L, int (*cb)(void *, void *), void *ch)
     ListaGen *pred = NULL;
     ListaGen *L2 = NULL;
     ListaGen *aux2 = NULL;
+
     while (auxB != NULL && cb(auxB->info, ch) != 0)
     {
         pred = auxB;
         auxB = auxB->prox;
     }
+
     if (auxB != NULL)
     {
         if (pred == NULL) // caso aux no inicio
@@ -137,16 +153,19 @@ ListaGen *removeChave(ListaGen *L, int (*cb)(void *, void *), void *ch)
                 aux = aux->prox;
             }
             aux2 = aux->prox;
-            return L2;
         }
+        printf("A chave foi removida da lista");
+        return L2;
     }
     printf("Chave nao encontrada na lista.\n");
+
     return L;
 }
 
 void percorreListagen(ListaGen *L, void (*cb)(void *))
 {
     ListaGen *aux = L;
+
     while (aux != NULL)
     {
         cb(aux->info);
@@ -157,6 +176,7 @@ void percorreListagen(ListaGen *L, void (*cb)(void *))
 ListaGen *busca(ListaGen *L, int (*cb)(void *, void *), void *ch)
 {
     ListaGen *aux = L;
+
     while (aux != NULL && cb(aux->info, ch) != 0)
     {
         aux = aux->prox;
@@ -167,6 +187,7 @@ ListaGen *busca(ListaGen *L, int (*cb)(void *, void *), void *ch)
 ListaGen *desfazer(ListaGen *L, Versao **pilhaDesfazer, Versao **pilhaRefazer)
 {
     Versao *versaoAtual = desempilha(pilhaDesfazer);
+
     if (*pilhaDesfazer == NULL)
     {
         return L;
@@ -178,13 +199,12 @@ ListaGen *desfazer(ListaGen *L, Versao **pilhaDesfazer, Versao **pilhaRefazer)
     }
 
     *pilhaRefazer = empilha(&(*pilhaRefazer), versaoAtual->Lista);
-
     ListaGen *versaoAnt = NULL;
+
     if (*pilhaDesfazer != NULL)
     {
         versaoAnt = (*pilhaDesfazer)->Lista;
     }
-
     free(versaoAtual);
 
     return versaoAnt;
@@ -192,11 +212,11 @@ ListaGen *desfazer(ListaGen *L, Versao **pilhaDesfazer, Versao **pilhaRefazer)
 
 ListaGen *refazer(ListaGen *L, Versao **pilhaDesfazer, Versao **pilhaRefazer)
 {
-
     if (*pilhaRefazer == NULL)
     {
         return L;
     }
+
     Versao *versaoAtual = desempilha(pilhaRefazer);
 
     if (versaoAtual == NULL)
@@ -205,9 +225,7 @@ ListaGen *refazer(ListaGen *L, Versao **pilhaDesfazer, Versao **pilhaRefazer)
     }
 
     *pilhaDesfazer = empilha(&(*pilhaDesfazer), versaoAtual->Lista);
-
     ListaGen *versaoRef = versaoAtual->Lista;
-
     free(versaoAtual);
 
     return versaoRef;

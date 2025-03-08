@@ -1,4 +1,3 @@
-
 #include "listaReversivel.h"
 #include "filme.h"
 #include "livro.h"
@@ -19,78 +18,97 @@ int main()
     livro *chaveL;
     ListaGen *aux;
     char chave[TAM];
-    int dp, op;
+    int dp = 0, op = 0;
 
     while (dp != 5)
     {
-        printf("___________________\n");
-        printf("Escolha um Produto\n");
+        system("cls");
+        printf("\n+----------------------------+\n");
+        printf("|     ESCOLHA UM PRODUTO     |\n");
+        printf("+----------------------------+\n");
         printf("1 - Chocolate \n");
         printf("2 - Vinho\n");
         printf("3 - Livro\n");
         printf("4 - Filme\n");
         printf("5 - Sair\n");
-        printf("___________________\n");
+        printf("------------------------------\n");
         printf("Digite a opcao: ");
         scanf("%d", &dp);
+
         if (dp < 5 && dp > 0)
         {
+            op = 0;
             while (op != 7 && dp != 5)
             {
-                printf("___________________\n");
-                printf("Estoque do Produto:\n");
+                system("cls");
+                printf("\n+----------------------------+\n");
+                printf("|     ESTOQUE DO PRODUTO     |\n");
+                printf("+----------------------------+\n");
                 printf("1 - Inserir\n");
                 printf("2 - Remover\n");
                 printf("3 - Imprimir\n");
                 printf("4 - Buscar\n");
                 printf("5 - Desfazer\n");
                 printf("6 - Refazer\n");
-                printf("7 - Sair\n");
-                printf("___________________\n");
+                printf("7 - Voltar\n");
+                printf("------------------------------\n");
                 printf("Digite a opcao: ");
                 scanf("%d", &op);
+                system("cls");
+
                 switch (op)
                 {
                 case 7:
-                    printf("\n\nSaindo...\n\n");
+                    system("cls");
                     break;
+
                 case 1:
                     if (dp == 1)
                     {
+                        printf("\nInserindo Chocolate:\n\n");
                         chaveC = criaChocolate();
                         C = insere(C, comparaChocolate, chaveC);
                         pilhaDesfazer = empilha(&pilhaDesfazer, C);
                     }
                     else if (dp == 2)
                     {
+                        printf("\nInserindo Vinho:\n\n");
                         chaveV = criaVinho();
-                        V = insere(C, comparaChocolate, chaveV);
+                        V = insere(V, comparaVinho, chaveV);
                         pilhaDesfazer = empilha(&pilhaDesfazer, V);
                     }
                     else if (dp == 3)
                     {
+                        printf("\nInserindo Livro:\n\n");
                         chaveL = criaLivro();
-                        L = insere(L, comparaChocolate, chaveL);
+                        L = insere(L, comparaLivro, chaveL);
                         pilhaDesfazer = empilha(&pilhaDesfazer, L);
                     }
-                    else
+                    else if (dp == 4)
                     {
+                        printf("\nInserindo Filme:\n\n");
                         chaveF = criaFilme();
-                        F = insere(C, comparaChocolate, chaveF);
+                        F = insere(F, comparaFilme, chaveF);
                         pilhaDesfazer = empilha(&pilhaDesfazer, F);
                     }
+
                     pilhaDesfazer->quantV++;
+
                     if (pilhaDesfazer->quantV == 20)
                     {
-                        pilhaDesfazer = destroeAntigo(pilhaDesfazer);
+                        pilhaDesfazer = destroiAntigo(pilhaDesfazer);
                         pilhaDesfazer->quantV = 0;
                     }
-                    printf("\n");
+                    printf("\nPressione 'Enter' para continuar...\n");
+                    getc(stdin);
+                    getc(stdin);
                     break;
+
                 case 2:
-                    printf("Digite a Nome/Titulo a ser removido: ");
+                    printf("Digite o Nome/Titulo a ser removido: ");
                     getc(stdin);
                     scanf("%[^\n]", chave);
+
                     if (dp == 1)
                     {
                         C = removeChave(C, comparaChocolate, chave);
@@ -98,56 +116,69 @@ int main()
                     }
                     else if (dp == 2)
                     {
-                        V = removeChave(C, comparaChocolate, chave);
+                        V = removeChave(V, comparaVinho, chave);
                         pilhaDesfazer = empilha(&pilhaDesfazer, V);
                     }
                     else if (dp == 3)
                     {
-                        L = removeChave(C, comparaChocolate, chave);
+                        L = removeChave(L, comparaLivro, chave);
                         pilhaDesfazer = empilha(&pilhaDesfazer, L);
                     }
                     else
                     {
-                        F = removeChave(C, comparaChocolate, chave);
+                        F = removeChave(F, comparaFilme, chave);
                         pilhaDesfazer = empilha(&pilhaDesfazer, F);
                     }
-                    printf("\n");
+                    printf("\nPressione 'Enter' para continuar...\n");
+                    getc(stdin);
+                    getc(stdin);
                     break;
+
                 case 3:
-                    printf("Estoque de");
+                    printf("\nEstoque de ");
                     if (dp == 1)
                     {
-                        printf(" Chocolate\n");
+                        printf("Chocolate\n");
+                        printf("------------------------------\n");
                         percorreListagen(C, imprimeChocolate);
                     }
                     else if (dp == 2)
                     {
-                        printf(" Vinho\n");
+                        printf("Vinho\n");
+                        printf("------------------------------\n");
                         percorreListagen(V, imprimeVinho);
                     }
                     else if (dp == 3)
                     {
-                        printf(" Livro\n");
+                        printf("Livro\n");
+                        printf("------------------------------\n");
                         percorreListagen(L, imprimeLivro);
                     }
                     else
                     {
-                        printf(" Filme\n");
+                        printf("Filme\n");
+                        printf("------------------------------\n");
                         percorreListagen(F, imprimeFilme);
                     }
-
+                    printf("\nPressione 'Enter' para continuar...\n");
+                    getc(stdin);
+                    getc(stdin);
                     break;
+
                 case 4:
+                    printf("\nDigite a chave a ser buscada: ");
+                    getc(stdin);
+                    scanf("%[^\n]", chave);
                     if (dp == 1)
                     {
                         aux = busca(C, comparaChocolate, chave);
                         if (aux)
                         {
-                            imprimeChocolate(aux);
+                            imprimeChocolate(aux->info);
                         }
                         else
                         {
-                            printf("Chocolate nao encotrado.");
+                            printf("Chocolate nao encontrado.\n");
                         }
                     }
                     else if (dp == 2)
@@ -155,11 +186,11 @@ int main()
                         aux = busca(V, comparaVinho, chave);
                         if (aux)
                         {
-                            imprimeVinho(aux);
+                            imprimeVinho(aux->info);
                         }
                         else
                         {
-                            printf("Vinho nao encotrado.");
+                            printf("Vinho nao encontrado.\n");
                         }
                     }
                     else if (dp == 3)
@@ -167,11 +198,11 @@ int main()
                         aux = busca(L, comparaLivro, chave);
                         if (aux)
                         {
-                            imprimeLivro(aux);
+                            imprimeLivro(aux->info);
                         }
                         else
                         {
-                            printf("Livro nao encotrado.");
+                            printf("Livro nao encontrado.\n");
                         }
                     }
                     else
@@ -179,14 +210,18 @@ int main()
                         aux = busca(F, comparaFilme, chave);
                         if (aux)
                         {
-                            imprimeFilme(aux);
+                            imprimeFilme(aux->info);
                         }
                         else
                         {
-                            printf("Filme nao encotrado.");
+                            printf("Filme nao encontrado.\n");
                         }
                     }
+                    printf("\nPressione 'Enter' para continuar...\n");
+                    getc(stdin);
+                    getc(stdin);
                     break;
+
                 case 5:
                     if (dp == 1)
                         C = desfazer(C, &pilhaDesfazer, &pilhaRefazer);
@@ -196,8 +231,12 @@ int main()
                         L = desfazer(L, &pilhaDesfazer, &pilhaRefazer);
                     else
                         F = desfazer(F, &pilhaDesfazer, &pilhaRefazer);
-                    printf("\n");
+                    printf("\nOperacao desfeita!\n");
+                    printf("\nPressione 'Enter' para continuar...\n");
+                    getc(stdin);
+                    getc(stdin);
                     break;
+
                 case 6:
                     if (dp == 1)
                         C = refazer(C, &pilhaDesfazer, &pilhaRefazer);
@@ -207,31 +246,45 @@ int main()
                         L = refazer(L, &pilhaDesfazer, &pilhaRefazer);
                     else
                         F = refazer(F, &pilhaDesfazer, &pilhaRefazer);
+                    printf("\nOperacao refeita!\n");
+                    printf("\nPressione 'Enter' para continuar...\n");
+                    getc(stdin);
+                    getc(stdin);
                     break;
+
                 default:
-                    printf("opcao inexistente!");
+                    printf("Opcao inexistente!\n");
+                    printf("\nPressione 'Enter' para continuar...\n");
+                    getc(stdin);
+                    getc(stdin);
                     break;
                 }
             }
         }
         else if (dp != 5)
         {
-            printf("\n\nERRO: OPÇÃO INEXISTENTE!!\n\n ");
+            printf("\nERRO: OPCAO INEXISTENTE!\n");
         }
     }
-    printf("|--------------------|\n");
-    printf("|Relatorio de estoque|\n");
-    printf("|--------------------|\n");
-    printf(" Estoque de Chocolate:\n");
+    system("cls");
+
+    printf("\n+----------------------------+\n");
+    printf("|    RELATORIO DE ESTOQUE    |\n");
+    printf("+----------------------------+\n");
+    printf("Estoque de Chocolate:\n");
     percorreListagen(C, imprimeChocolate);
-    printf("\n\n");
-    printf(" Estoque de Vinho:\n");
-    percorreListagen(V, imprimeChocolate);
-    printf("\n\n");
-    printf(" Estoque de Livro:\n");
-    percorreListagen(L, imprimeChocolate);
-    printf("\n\n");
-    printf(" Estoque de Filme\n");
-    percorreListagen(F, imprimeChocolate);
-    return 1;
+    printf("\n------------------------------\n");
+    printf("Estoque de Vinho:\n");
+    percorreListagen(V, imprimeVinho);
+    printf("\n------------------------------\n");
+    printf("Estoque de Livro:\n");
+    percorreListagen(L, imprimeLivro);
+    printf("\n------------------------------\n");
+    printf("Estoque de Filme:\n");
+    percorreListagen(F, imprimeFilme);
+    printf("\n------------------------------\n");
+
+    printf("\nSaindo do programa...\n\n");
+
+    return 0;
 }
