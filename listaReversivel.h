@@ -193,11 +193,19 @@ ListaGen *refazer(ListaGen *L, Versao **pilhaDesfazer, Versao **pilhaRefazer);
  * - Descrição:Copia todos os ponteiros  de uma lista do tipo listaGen.
  *
  * @param L Ponteiro para a lista reversível.
- * @param pilhaDefazer Ponteiro para a pilha de versões de desfazer.
- * @param pilhaRefazer Ponteiro para a pilha de versões de refazer.
  *
- * @return Retorna um ponteiro do tipo ListaGen.
+ * @return Retorna uma copia de uma lista do tipo ListaGen.
  */
 ListaGen *copiaLista(ListaGen *L);
 
+/**
+ * - Função: transMin
+ *
+ * - Descrição:Função que transforma uma char em todo minusculo.
+ *
+ * @param char[TAM]: um ponteiro do tipo char.
+ *
+ * @return Retorna uma palavra toda minuscula.
+ */
+char *transMin(char aux[TAM]);
 #endif

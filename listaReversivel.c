@@ -229,6 +229,14 @@ ListaGen *busca(ListaGen *L, int (*cb)(void *, void *), void *ch)
     return aux;
 }
 
+char *transMin(char aux[TAM])
+{
+    int tamanho = strlen(aux);
+    for (int i = 0; i < tamanho; i++)
+        aux[i] = tolower(aux[i]);
+    return aux;
+}
+
 ListaGen *desfazer(ListaGen *L, Versao **pilhaDesfazer, Versao **pilhaRefazer)
 {
     Versao *versaoAtual = desempilha(pilhaDesfazer);
