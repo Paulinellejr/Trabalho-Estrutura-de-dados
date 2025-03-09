@@ -18,9 +18,21 @@ vinho *criaVinho()
     getc(stdin);
     scanf("%[^\n]", novo->vinicola);
 
-    printf("Tipo (tinto, branco, rose, espumante branco, espumante rose): ");
-    getc(stdin);
-    scanf("%[^\n]", novo->tipo);
+    int OpEx = 0;
+    while (OpEx == 0)
+    {
+        printf("Tipo (tinto, branco, rose, espumante branco, espumante rose): ");
+        getc(stdin);
+        scanf("%[^\n]", novo->tipo);
+
+        strcpy(novo->tipo, transMin(novo->tipo));
+        if (strcmp(novo->tipo, "tinto") != 0 && strcmp(novo->tipo, "branco") != 0 && strcmp(novo->tipo, "rose") != 0 && strcmp(novo->tipo, "rose") != 0 && strcmp(novo->tipo, "espumante branco") != 0 && strcmp(novo->tipo, "espumante rose") != 0)
+        {
+            printf("\nOPCAO INEXISTENTE!\n\n");
+        }
+        else
+            OpEx++;
+    }
 
     printf("Pais: ");
     getc(stdin);

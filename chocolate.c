@@ -34,9 +34,23 @@ chocolate *criaChocolate()
     getc(stdin);
     scanf("%[^\n]", novo->marca);
 
-    printf("Tipo de chocolate (ao leite, amargo ou branco): ");
-    getc(stdin);
-    scanf("%[^\n]", novo->tipo);
+    int OpEx = 0;
+    while (OpEx == 0)
+    {
+        printf("Tipo de chocolate (ao leite, amargo ou branco): ");
+        getc(stdin);
+        scanf("%[^\n]", novo->tipo);
+
+        strcpy(novo->tipo, transMin(novo->tipo));
+        if (strcmp(novo->tipo, "ao leite") != 0 && strcmp(novo->tipo, "amargo") != 0 && strcmp(novo->tipo, "branco") != 0)
+        {
+            printf("\nOPCAO INEXISTENTE!\n\n");
+        }
+        else
+        {
+            OpEx++;
+        }
+    }
 
     if (strcmp(novo->tipo, "amargo") == 0)
     {
