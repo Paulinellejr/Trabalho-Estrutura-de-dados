@@ -12,6 +12,7 @@ vinho *criaVinho()
     printf("Nome: ");
     getc(stdin);
     scanf("%[^\n]", novo->nome);
+    strcpy(novo->nome, transMin(novo->nome));
 
     printf("Vinicola: ");
     getc(stdin);

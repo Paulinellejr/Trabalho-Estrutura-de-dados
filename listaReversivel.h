@@ -200,4 +200,14 @@ ListaGen *refazer(ListaGen *L, Versao **pilhaDesfazer, Versao **pilhaRefazer);
  */
 ListaGen *copiaLista(ListaGen *L);
 
+/**
+ * - Função: transMin
+ *
+ * - Descrição:transforma um char  que contem letras maiuscula em letra minuscula.
+ *
+ * @param char aux[TAM] ponteiro para um char que sera modificado.
+ *
+ * @return Retorna a palavra de paramentro em toda minuscula.
+ */
+char *transMin(char aux[TAM]);
 #endif

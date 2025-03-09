@@ -275,3 +275,11 @@ ListaGen *refazer(ListaGen *L, Versao **pilhaDesfazer, Versao **pilhaRefazer)
 
     return versaoRef;
 }
+
+char *transMin(char aux[TAM])
+{
+    int tamanho = strlen(aux);
+    for (int i = 0; i < tamanho; i++)
+        aux[i] = tolower(aux[i]);
+    return aux;
+}

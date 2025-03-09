@@ -28,6 +28,7 @@ chocolate *criaChocolate()
     printf("Nome: ");
     getc(stdin);
     scanf("%[^\n]", novo->nome);
+    strcpy(novo->nome, transMin(novo->nome));
 
     printf("Marca: ");
     getc(stdin);
@@ -36,9 +37,6 @@ chocolate *criaChocolate()
     printf("Tipo de chocolate (ao leite, amargo ou branco): ");
     getc(stdin);
     scanf("%[^\n]", novo->tipo);
-    int tamanho = strlen(novo->tipo);
-    for (int i = 0; i < tamanho; i++)
-        novo->tipo[i] = tolower(novo->tipo[i]);
 
     if (strcmp(novo->tipo, "amargo") == 0)
     {
