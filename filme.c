@@ -12,6 +12,7 @@ filme *criaFilme()
     printf("Titulo: ");
     getc(stdin);
     scanf("%[^\n]", novo->titulo);
+    strcpy(novo->titulo, transMin(novo->titulo));
 
     printf("Diretor: ");
     getc(stdin);

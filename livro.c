@@ -20,6 +20,7 @@ livro *criaLivro()
     printf("Titulo: ");
     getc(stdin);
     scanf("%[^\n]", novo->titulo);
+    strcpy(novo->titulo, transMin(novo->titulo));
 
     printf("Autor: ");
     getc(stdin);
