@@ -18,9 +18,10 @@ int main()
     livro *chaveL;
     ListaGen *aux;
     char chave[TAM];
-    int dp = 0, op = 0;
+    int op = 0;
+    char opMenu[3];
 
-    while (dp != 5)
+    while (strcmp(opMenu, "5") != 0)
     {
         system("cls || clear");
         printf("\n+----------------------------+\n");
@@ -33,12 +34,13 @@ int main()
         printf("5 - Sair\n");
         printf("------------------------------\n");
         printf("Digite a opcao: ");
-        scanf("%d", &dp);
+        getc(stdin);
+        scanf("%[^\n]", opMenu);
 
-        if (dp < 5 && dp > 0)
+        if (strcmp(opMenu, "1") == 0 || strcmp(opMenu, "2") == 0 || strcmp(opMenu, "3") == 0 || strcmp(opMenu, "4") == 0)
         {
             op = 0;
-            while (op != 7 && dp != 5)
+            while (op != 7)
             {
                 system("cls || clear");
                 printf("\n+----------------------------+\n");
@@ -59,11 +61,11 @@ int main()
                 switch (op)
                 {
                 case 7:
-                    if (dp == 1)
+                    if (strcmp(opMenu, "1") == 0)
                         C = copiaLista(C);
-                    else if (dp == 2)
+                    else if (strcmp(opMenu, "2") == 0)
                         V = copiaLista(V);
-                    else if (dp == 3)
+                    else if (strcmp(opMenu, "3") == 0)
                         L = copiaLista(L);
                     else
                         F = copiaLista(F);
@@ -73,28 +75,28 @@ int main()
                     break;
 
                 case 1:
-                    if (dp == 1)
+                    if (strcmp(opMenu, "1") == 0)
                     {
                         printf("\nInserindo Chocolate:\n\n");
                         chaveC = criaChocolate();
                         C = insere(C, comparaChocolate, chaveC);
                         pilhaDesfazer = empilha(&pilhaDesfazer, C);
                     }
-                    else if (dp == 2)
+                    else if (strcmp(opMenu, "2") == 0)
                     {
                         printf("\nInserindo Vinho:\n\n");
                         chaveV = criaVinho();
                         V = insere(V, comparaVinho, chaveV);
                         pilhaDesfazer = empilha(&pilhaDesfazer, V);
                     }
-                    else if (dp == 3)
+                    else if (strcmp(opMenu, "3") == 0)
                     {
                         printf("\nInserindo Livro:\n\n");
                         chaveL = criaLivro();
                         L = insere(L, comparaLivro, chaveL);
                         pilhaDesfazer = empilha(&pilhaDesfazer, L);
                     }
-                    else if (dp == 4)
+                    else
                     {
                         printf("\nInserindo Filme:\n\n");
                         chaveF = criaFilme();
@@ -119,17 +121,17 @@ int main()
                     getc(stdin);
                     scanf("%[^\n]", chave);
 
-                    if (dp == 1)
+                    if (strcmp(opMenu, "1") == 0)
                     {
                         C = removeChave(C, comparaChocolate, chave);
                         pilhaDesfazer = empilha(&pilhaDesfazer, C);
                     }
-                    else if (dp == 2)
+                    else if (strcmp(opMenu, "2") == 0)
                     {
                         V = removeChave(V, comparaVinho, chave);
                         pilhaDesfazer = empilha(&pilhaDesfazer, V);
                     }
-                    else if (dp == 3)
+                    else if (strcmp(opMenu, "3") == 0)
                     {
                         L = removeChave(L, comparaLivro, chave);
                         pilhaDesfazer = empilha(&pilhaDesfazer, L);
@@ -146,19 +148,19 @@ int main()
 
                 case 3:
                     printf("\nEstoque de ");
-                    if (dp == 1)
+                    if (strcmp(opMenu, "1") == 0)
                     {
                         printf("Chocolate\n");
                         printf("------------------------------\n");
                         percorreListagen(C, imprimeChocolate);
                     }
-                    else if (dp == 2)
+                    else if (strcmp(opMenu, "2") == 0)
                     {
                         printf("Vinho\n");
                         printf("------------------------------\n");
                         percorreListagen(V, imprimeVinho);
                     }
-                    else if (dp == 3)
+                    else if (strcmp(opMenu, "3") == 0)
                     {
                         printf("Livro\n");
                         printf("------------------------------\n");
@@ -179,7 +181,7 @@ int main()
                     printf("\nDigite a chave a ser buscada: ");
                     getc(stdin);
                     scanf("%[^\n]", chave);
-                    if (dp == 1)
+                    if (strcmp(opMenu, "1") == 0)
                     {
                         aux = busca(C, comparaChocolate, chave);
                         if (aux)
@@ -191,7 +193,7 @@ int main()
                             printf("Chocolate nao encontrado.\n");
                         }
                     }
-                    else if (dp == 2)
+                    else if (strcmp(opMenu, "2") == 0)
                     {
                         aux = busca(V, comparaVinho, chave);
                         if (aux)
@@ -203,7 +205,7 @@ int main()
                             printf("Vinho nao encontrado.\n");
                         }
                     }
-                    else if (dp == 3)
+                    else if (strcmp(opMenu, "3") == 0)
                     {
                         aux = busca(L, comparaLivro, chave);
                         if (aux)
@@ -233,11 +235,11 @@ int main()
                     break;
 
                 case 5:
-                    if (dp == 1)
+                    if (strcmp(opMenu, "1") == 0)
                         C = desfazer(C, &pilhaDesfazer, &pilhaRefazer);
-                    else if (dp == 2)
+                    else if (strcmp(opMenu, "2") == 0)
                         V = desfazer(V, &pilhaDesfazer, &pilhaRefazer);
-                    else if (dp == 3)
+                    else if (strcmp(opMenu, "3") == 0)
                         L = desfazer(L, &pilhaDesfazer, &pilhaRefazer);
                     else
                         F = desfazer(F, &pilhaDesfazer, &pilhaRefazer);
@@ -248,11 +250,11 @@ int main()
                     break;
 
                 case 6:
-                    if (dp == 1)
+                    if (strcmp(opMenu, "1") == 0)
                         C = refazer(C, &pilhaDesfazer, &pilhaRefazer);
-                    else if (dp == 2)
+                    else if (strcmp(opMenu, "2") == 0)
                         V = refazer(V, &pilhaDesfazer, &pilhaRefazer);
-                    else if (dp == 3)
+                    else if (strcmp(opMenu, "4") == 0)
                         L = refazer(L, &pilhaDesfazer, &pilhaRefazer);
                     else
                         F = refazer(F, &pilhaDesfazer, &pilhaRefazer);
@@ -271,7 +273,7 @@ int main()
                 }
             }
         }
-        else if (dp != 5)
+        else if (strcmp(opMenu, "5") != 0)
         {
             system("cls || clear");
             printf("\nOPCAO INEXISTENTE!\n");
