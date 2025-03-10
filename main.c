@@ -118,6 +118,7 @@ int main()
                     printf("Digite o Nome/Titulo a ser removido: ");
                     getc(stdin);
                     scanf("%[^\n]", chave);
+                    strcpy(chave, transMin(chave));
 
                     if (dp == 1)
                     {
